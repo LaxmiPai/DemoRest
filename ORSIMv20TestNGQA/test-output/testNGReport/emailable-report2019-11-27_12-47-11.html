@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>TestNG Report</title>
+<style type="text/css">
+table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}
+td,th {border:1px solid #009;padding:.25em .5em}
+.result th {vertical-align:bottom}
+.param th {padding-left:1em;padding-right:1em}
+.param td {padding-left:.5em;padding-right:2em}
+.stripe td,.stripe th {background-color: #E6EBF9}
+.numi,.numi_attn {text-align:right}
+.total td {font-weight:bold}
+.passedodd td {background-color: #0A0}
+.passedeven td {background-color: #3F3}
+.skippedodd td {background-color: #CCC}
+.skippedodd td {background-color: #DDD}
+.failedodd td,.numi_attn {background-color: #F33}
+.failedeven td,.stripe .numi_attn {background-color: #D00}
+.stacktrace {white-space:pre;font-family:monospace}
+.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}
+</style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" class="testOverview">
+<tr><th>Test</th><th>Methods<br/>Passed</th><th>Scenarios<br/>Passed</th><th># skipped</th><th># failed</th><th>Error messages</th><th>Parameters</th><th>Start<br/>Time</th><th>End<br/>Time</th><th>Total<br/>Time</th><th>Included<br/>Groups</th><th>Excluded<br/>Groups</th></tr>
+<tr><td style="text-align:left;padding-right:2em"><a href="#t1">PrinterSetup.Add/Edit/Delete Printer</a></td><td class="numi">2</td><td class="numi">2</td><td class="numi">0</td><td class="numi_attn">2</td><td class="numi">org.openqa.selenium.InvalidElementStateException: invalid element state: Element must be user-editable in order to clear it.
+java.lang.AssertionError: The following asserts failed:
+</td>
+<td class="numi">{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName1, ManifestDefault=No} | 
+{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName1, ManifestDefault=No} | 
+{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes} | 
+{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes} | 
+</td>
+<td class="numi">27 Nov 2019 07:14:33 GMT</td></td>
+<td class="numi">27 Nov 2019 07:17:11 GMT</td></td>
+<td class="numi">158.6 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+</table>
+<table cellspacing="0" cellpadding="0" class="methodOverview" id="summary">
+<tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Time<br/>(ms)</th></tr>
+<tr id="t1"><th colspan="5">PrinterSetup.Add/Edit/Delete Printer &#8212; failed (configuration methods)</th></tr>
+<tr class="failedodd"><td>com.oracle.sim.testcases.PrinterSetup.Printer</td><td><a href="#m1"><b>tearDown</b>  </a></td><td class="numi">1</td><td class="numi">0.5406666666666666</td></tr>
+<tr><th colspan="5">PrinterSetup.Add/Edit/Delete Printer &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="2">com.oracle.sim.testcases.PrinterSetup.Printer</td><td><a href="#m2"><b>printerEdit</b>  </a></td><td class="numi">1</td><td class="numi">0.041433333333333336</td></tr><tr class="failedodd"><td><a href="#m3"><b>printerDelete</b>  </a></td><td class="numi">1</td><td class="numi">1.5670833333333334</td></tr>
+<tr><th colspan="5">PrinterSetup.Add/Edit/Delete Printer &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="2">com.oracle.sim.testcases.PrinterSetup.Printer</td><td><a href="#m4"><b>printerAdd</b>  </a></td><td class="numi">1</td><td class="numi">0.2237</td></tr><tr class="passedodd"><td><a href="#m5"><b>printerSearch</b>  </a></td><td class="numi">1</td><td class="numi">0.015016666666666668</td></tr>
+</table>
+<h1>PrinterSetup.Add/Edit/Delete Printer</h1>
+<h2 id="m1">com.oracle.sim.testcases.PrinterSetup.Printer:tearDown</h2>
+<div>
+<div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: /html[1]/body[1]/div[1]/div[2]/oj-dialog[1]/div[3]/div[1]/oj-button[2]/button[1]/div[1]/span[1] (tried for 30 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:113)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:283)
+	at com.oracle.core.base.CoreBasePage.explicitWaitForVisibility(CoreBasePage.java:563)
+	at com.oracle.sim.testcases.PrinterSetup.Printer.tearDown(Printer.java:201)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: /html[1]/body[1]/div[1]/div[2]/oj-dialog[1]/div[3]/div[1]/oj-button[2]/button[1]/div[1]/span[1]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.14.0&apos;, revision: &apos;aacccce0&apos;, time: &apos;2018-08-02T20:19:58.91Z&apos;
+System info: host: &apos;NIUDUPA-IN&apos;, ip: &apos;10.7.227.238&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_221&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:260)
+	... 28 more
+... Removed 26 stack frames</div>
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m2">com.oracle.sim.testcases.PrinterSetup.Printer:printerEdit</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Param.1</th></tr>
+<tr class="param stripe"><td>{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName1, ManifestDefault=No}</td>
+</tr>
+<tr><td>
+<div class="stacktrace">org.openqa.selenium.InvalidElementStateException: invalid element state: Element must be user-editable in order to clear it.
+  (Session info: chrome=78.0.3904.108)
+Build info: version: &apos;3.14.0&apos;, revision: &apos;aacccce0&apos;, time: &apos;2018-08-02T20:19:58.91Z&apos;
+System info: host: &apos;NIUDUPA-IN&apos;, ip: &apos;10.7.227.238&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_221&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 78.0.3904.108, chrome: {chromedriverVersion: 77.0.3865.40 (f484704e052e0..., userDataDir: C:\Users\niudupa\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:60450}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 99b29fa7a9c5e0a9e13add4586021d35
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:118)
+	at com.oracle.core.base.CoreBasePage.enterText(CoreBasePage.java:328)
+	at com.oracle.core.base.CoreBasePage.enterIntoTextBox(CoreBasePage.java:85)
+	at com.oracle.sim.testcases.PrinterSetup.Printer.printerEdit(Printer.java:127)
+... Removed 29 stack frames</div>
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m3">com.oracle.sim.testcases.PrinterSetup.Printer:printerDelete</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Param.1</th></tr>
+<tr class="param stripe"><td>{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName1, ManifestDefault=No}</td>
+</tr>
+<tr><td>
+<div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [EditedPrinterName] but found []
+	at com.oracle.core.base.CoreBasePage.verifyTextValue(CoreBasePage.java:76)
+	at com.oracle.sim.testcases.PrinterSetup.Printer.printerDelete(Printer.java:161)
+... Removed 26 stack frames</div>
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m4">com.oracle.sim.testcases.PrinterSetup.Printer:printerAdd</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Param.1</th></tr>
+<tr class="param stripe"><td>{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes}</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m5">com.oracle.sim.testcases.PrinterSetup.Printer:printerSearch</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Param.1</th></tr>
+<tr class="param stripe"><td>{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes}</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<center> Report customized by Hector Flores [hectorfb@gmail.com] </center>
+</body></html>

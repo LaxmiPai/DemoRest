@@ -1,0 +1,60 @@
+package com.oracle.sim.pages.Configuration;
+
+import org.openqa.selenium.By;
+
+import com.oracle.sim.pages.Base.SimBasePage;
+
+//**@lrathnak**//
+
+public class BarcodeProcessor extends SimBasePage {
+	
+	SimBasePage LoginPage;
+	SimBasePage HomePage;
+	SimBasePage BarcodeProcessor;
+	
+	public BarcodeProcessor() throws Exception {
+	
+		addObject("Title",By.xpath("//h3[contains(@class,'sim-screen-title')]"));
+		addObject("DetailBlockTitle",By.xpath("//h3[text()='Detail']"));
+		addObject("DetailBlock",By.xpath("//div[contains(@class,'sim-screen-detail-side')]"));
+		addObject("DetailEditEnebledButton",By.xpath("//oj-button[contains(@class,'oj-enabled')]//following::span[text()='Edit']"));
+		addObject("DetailApplyButton",By.xpath("//oj-button[@id='detail-apply-button']"));
+		addObject("DetailEditButton",By.xpath("//oj-button[@id='detail-edit-button']"));
+		addObject("DetailCancelButton",By.xpath("//oj-button[@id='detail-cancel-button']"));
+		addObject("SaveButton",By.xpath("//oj-button[@id='save-button']"));
+		addObject("RefreshButton",By.xpath("//oj-button[@id='refresh-button']"));
+		addObject("DetailProcessorName",By.xpath("//span[@id='input-processor-name|hint']"));
+		addObject("DetailActiveText",By.xpath("//label[text()='Active']"));
+		addObject("DetailSequenceText",By.xpath("//label[contains(@id,'input-sequence-')]"));
+		addObject("FirstRowProcessor",By.xpath("//tr[contains(@id,'grid-row')][1]"));
+		addObject("DetailActiveSwitch",By.xpath("//div[@class='oj-switch-track']"));
+		addObject("RefreshDialogboxText",By.xpath("//span[contains(text(),'If you continue, your changes will not be saved. D')]"));
+		addObject("RefreshDialogOkButton",By.xpath("//oj-dialog[@id='sim-main-message-dialog']//span[text()='OK']"));
+		addObject("DetailActiveStatus",By.xpath("//div[@class='oj-flex-item']//oj-switch//following::span[1]"));
+		addObject("DisabledActiveStatus",By.xpath("//div[@class='oj-switch-thumb']"));
+		addObject("ProcessorNameHeader",By.xpath("//th[@title='Processor Name']"));
+		addObject("ProcessorNameColumn",By.xpath("//td[contains(@id,'-col-description')]"));
+		addObject("BarcodeProcessorRows",By.xpath("//td[contains(@id,'-col-description')]"));
+		addObject("ActiveNameHeader",By.xpath("//th[@title='Active']"));
+		addObject("FilterOfFrstColumn",By.xpath("//oj-lux-grid[@id='sim-screen-grid-comp']//input[contains(@id,'input-column-filter-description')]"));
+	//	addObject("ProcessorNameFsrtRow",By.xpath("//tr[contains(@id,'-group-all')][1]"));
+		addObject("ProcessorNameFrstRow",By.xpath("//th[contains(@id,'-header-description')]//following::td[1]"));
+		addObject("FocusedCell",By.xpath("//tr//*[contains(@class,'cell-focused')]"));
+		addObject("SequenceNameHeader",By.xpath("//th[@title='Active']"));
+		addObject("SequenceCloumnInGrp",By.xpath("//td[contains(@id,'-col-sequence')]"));
+		addObject("DetailProcessorNameInput",By.xpath("//textarea[@id='input-processor-name|input']"));
+		addObject("DetailSequenceInput",By.xpath("//input[@id='input-sequence|input']"));
+		addObject("SequenceColumnFilter",By.xpath("//input[contains(@id,'-filter-active')]"));
+		addObject("SequenceColumnHilighted",By.xpath("//mark[@class='grid-highlight']"));
+		addObject("SequenceColumnComplete",By.xpath("//td[contains(@id,'-col-active')]"));
+		addObject("GridViewMenu",By.xpath("//oj-menu-button[@title='Grid View Menu']"));
+		addObject("ColumnFilter",By.xpath("//a[text()='Column Filter']"));
+		addObject("DetailDisabledEditButton",By.xpath("//oj-button[contains(@class,'complete oj-disabled')]//following::span[text()='Edit']"));
+		addObject("DetailDisableApplyButton",By.xpath("//oj-button[contains(@class,'oj-disabled oj-button')][2]"));
+		addObject("DetailDesabledCancelButton",By.xpath("//oj-button[contains(@class,'oj-disabled oj-button')][3]"));
+		addObject("DetailApplyButtonEnabled",By.xpath("//oj-button[contains(@class,'complete oj-enabled')]//child::span[text()='Apply']"));
+		addObject("DetailCancelButtonEnabled",By.xpath("//oj-button[contains(@class,'complete oj-enabled')]//child::span[text()='Cancel']"));
+		
+	}
+	
+}

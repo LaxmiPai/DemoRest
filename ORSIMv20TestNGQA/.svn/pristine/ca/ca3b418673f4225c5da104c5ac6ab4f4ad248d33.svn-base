@@ -1,0 +1,166 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ORSIM SMOKE Tests">
+	<listeners>
+		<listener
+			class-name="com.oracle.core.reports.ExtentReporterNG" />
+		<listener
+			class-name="com.oracle.core.reports.TestNGCustomReportListener" />
+		<listener
+			class-name="com.oracle.core.reports.TestScreenshotListener" />
+	</listeners>
+
+	<test name="Subbuckets">
+		<classes>
+			<class name="com.oracle.sim.testcases.Subbuckets.SubBuckets" />
+		</classes>
+	</test>
+	<test name="ShipmentReasons">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ShipmentReason.ShipmentReasons" />
+		</classes>
+	</test>
+	<test name="PrinterSetup.Add/Edit/Search/Delete Printer">
+		<classes>
+			<class name="com.oracle.sim.testcases.PrinterSetup.Printer" />
+		</classes>
+	</test>
+	<test name="PackageSizeSetup.Add/Edit/Search/Delete PackageSize">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.PackageSizeSetup" />
+		</classes>
+	</test>
+	<test name="SupplierLookupId">
+		<classes>
+			<class name="com.oracle.sim.testcases.Lookup.SupplierLookupId" />
+		</classes>
+	</test>
+	<test name="SupplierLookupName">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Lookup.SupplierLookupName" />
+		</classes>
+	</test>
+
+	<test name="FinisherLookup-FilterCriteria.IncludeInactiveSwitch">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaIncludeInactiveSwitchOption" />
+		</classes>
+	</test>
+
+
+	<test
+		name="FinisherLookup-FilterCriteria.ValidateVerifyRecordFound">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaValidateVerifyRecordFound" />
+		</classes>
+	</test>
+
+
+	<test name="FinisherLookup-FinishersVerifyDetailScreen">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.SearchIncludeInactiveFinishersVerifyDetailScreenTestcase" />
+		</classes>
+	</test>
+
+	<test name="FinisherLookup-FilterCriteria.ValidateFinisherId">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaValidateFinisherID" />
+		</classes>
+	</test>
+
+	<test name="FinisherLookup-FilterCriteria.ValidateItemId">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaValidateItemID" />
+		</classes>
+	</test>
+
+	<test name="FinisherLookup-FilterCriteria.ValidateName">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaValidateName" />
+		</classes>
+	</test>
+
+	<test name="CustomFlexibleAttribute.Add/Save/Filter/Remove">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.CustomFlexibleAttribute.CustomFlexibleAttribute" />
+		</classes>
+	</test>
+
+	<test name="MPSWorkTypeApplyBlockApply">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSWorkType.MpsWorkTypeDetailApplyBlockApply" />
+		</classes>
+	</test>
+
+	<test name="MPSWorkTypeDetailApplyBlockCancel">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSWorkType.MpsWorkTypeDetailApplyBlockCancel" />
+		</classes>
+	</test>
+
+	<test name="MPSWorkTypeApplyDetailBlockEdit">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSWorkType.MpsWorkTypeDetailApplyBlockEdit" />
+		</classes>
+	</test>
+	<test name="CarrierAddAndDelete">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.CarrierAddAndDelete" />
+		</classes>
+	</test>
+	<test name="TransactionHistoryListRecordValidation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TransactionHistory.TransactionHistoryListRecordValidation" />
+		</classes>
+	</test>
+	<test name="TransactionHistoryListNavigationToActualTransaction">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TransactionHistory.TransactionHistoryListNavigationToActualTransaction" />
+		</classes>
+	</test>
+	<test name="TransactionHistorySearchUsingFromAndToDates">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TransactionHistory.TransactionHistorySearchUsingFromAndToDates" />
+		</classes>
+	</test>
+	<test name="BatchSchedulerApply">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobScheduler.BatchSchedulerApply" />
+		</classes>
+	</test>
+	<test name="BatchSchedulerJobExecutionTime">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobScheduler.BatchSchedulerJobExecutionTime" />
+		</classes>
+	</test>
+	<test name="UinLookupViewHistoryLink">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.UinLookup.UinLookupViewHistoryLink" />
+		</classes>
+	</test>
+	<test name="UinLookupNoDateError">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.UinLookup.UinLookupNoDateError" />
+		</classes>
+	</test>
+</suite>

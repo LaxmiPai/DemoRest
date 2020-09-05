@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="com.oracle.sim.testcases.PrinterSetup.Printer">
+        <methods>
+          <include name="printerDelete"/>
+          <include name="printerSearch"/>
+          <include name="tearDown"/>
+          <include name="printerAdd"/>
+          <include name="setup"/>
+          <include name="printerEdit"/>
+        </methods>
+      </class> <!-- com.oracle.sim.testcases.PrinterSetup.Printer -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

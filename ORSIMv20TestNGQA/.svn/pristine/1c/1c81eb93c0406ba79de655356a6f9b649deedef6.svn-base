@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [ORSIM GWT UI Tests]">
+  <listeners>
+    <listener class-name="com.oracle.core.reports.ExtentReporterNG"/>
+    <listener class-name="com.oracle.core.reports.TestNGCustomReportListener"/>
+    <listener class-name="com.oracle.core.reports.TestScreenshotListener"/>
+  </listeners>
+  <test thread-count="5" name="PrinterSetup.Add/Edit/Delete Printer(failed)">
+    <classes>
+      <class name="com.oracle.sim.testcases.PrinterSetup.Printer">
+        <methods>
+          <include name="printerDelete" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="printerEdit" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.oracle.sim.testcases.PrinterSetup.Printer -->
+    </classes>
+  </test> <!-- PrinterSetup.Add/Edit/Delete Printer(failed) -->
+</suite> <!-- Failed suite [ORSIM GWT UI Tests] -->

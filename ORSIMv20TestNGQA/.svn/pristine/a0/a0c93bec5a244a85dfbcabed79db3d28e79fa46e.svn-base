@@ -1,0 +1,216 @@
+package com.oracle.sim.pages.InventoryManagement;
+
+/**
+ * @author dsorthiy , lapai
+ *
+ * 
+ */
+
+import org.openqa.selenium.By;
+
+import com.oracle.sim.pages.Base.SimBasePage;
+
+public class TicketPage extends SimBasePage{
+	public TicketPage() throws Exception {
+		super();
+		//Ticket list 
+		addObject("TicketListTitle",By.xpath("//h3[text()='Ticket List']"));
+		addObject("SearchIcon",By.xpath("//oj-button[@id='search-button']"));
+		addObject("RefreshButton",By.xpath("//oj-button[@id='refresh-button']"));
+		addObject("ListScreenCreateButton",By.xpath("//oj-button[@id='create-button']"));
+		addObject("ListScreenDeleteButton",By.xpath("//oj-button[@id='delete-button']"));
+		addObject("ListScreenPrintButton",By.xpath("//oj-button[@id='print-button']"));
+		addObject("RefreshQtyButton",By.xpath("//oj-button[@id='refresh-qty']"));
+		addObject("GridViewMenu",By.xpath("//oj-menu-button[@title='Grid View Menu']"));
+		addObject("GridHighLightRecord",By.xpath("//mark[contains(@class,'grid-highlight')]"));
+		addObject("SearchCriteriaCloseButton",By.xpath("//oj-button[contains(@class,'oj-dialog-header-close-wrapper')]"));
+		addObject("ItemHeader",By.xpath("//th[@title='Item']"));
+		addObject("CreateButton",By.xpath("//oj-button[@id='create-button']//div[@class='oj-button-label']"));
+		addObject("SearchCriteriaCloseButton",By.xpath("//oj-button[contains(@class,'oj-dialog-header-close-wrapper')]"));
+		addObject("ListScreenPrintButton",By.xpath("//oj-button[@id='print-button']//div[@class='oj-button-label']"));
+		addObject("FilterByQuantity",By.xpath("//input[contains(@id,'input-column-filter-ticketCount')]"));
+		addObject("SearchCriteriaCloseButton",By.xpath("//oj-button[contains(@class,'oj-dialog-header-close-wrapper')]"));
+		addObject("ItemHeader",By.xpath("//th[@title='Item']"));
+		addObject("ListScreenPrintButton",By.xpath("//oj-button[@id='print-button']//div[@class='oj-button-label']"));
+		addObject("FilterByPrintDate",By.xpath("//input[contains(@id,'input-column-filter-printDate')]"));
+		addObject("ItemIdLink",By.xpath("//tbody//tr[1]//a[contains(@id,'col-itemId-link')]"));
+		addObject("DeleteMsgNoRecordSelected",By.xpath("//span[contains(text(),'No records selected. Select one or more records to')]"));
+		addObject("FilterByFormatType",By.xpath("//input[contains(@id,'input-column-filter-ticketFormatType')]"));
+		addObject("DeleteConfirmationMsg",By.xpath("//span[contains(text(),'The selected records will be deleted. Do you want')]"));
+		addObject("NorecordsMsg", By.xpath("//span[@class='rowset-message-text']"));
+		addObject("DeleteHistoryRecord",By.xpath("//span[contains(text(),'One or more History records selected. Tickets cann')]"));
+		addObject("Row1",By.xpath("//tbody/tr[contains(@id,'row-2')]"));
+		addObject("PrintDateColumnElements",By.xpath("//td[@data-index='printDate']"));
+		addObject("PrintQuantityColumnElements",By.xpath("//td[@data-index='ticketCount']"));
+		
+		//Grid Field Titles.
+		addObject("PrintDateLabel",By.xpath("//div[text()='Print Date']"));
+		addObject("ItemHeaderLabel",By.xpath("//div[text()='Item']"));
+		addObject("ItemHeader",By.xpath("//th[@title='Item']"));
+		addObject("DescriptionHeader",By.xpath("//th[@title='Description']"));
+		addObject("FormatTypeHeader",By.xpath("//th[@title='Format Type']"));
+		addObject("OriginTypeHeader",By.xpath("//th[@title='Origin Type']"));
+		addObject("PrintQuantityHeader",By.xpath("//th[@title='Print Quantity']"));
+		addObject("PriceTypeHeader",By.xpath("//th[@title='Price Type']"));
+		addObject("ActiveDateHeader",By.xpath("//th[@title='Active Date']"));
+		addObject("EndDateHeader",By.xpath("//th[@title='End Date']"));
+		addObject("PrintedHeader",By.xpath("//th[@title='Printed']"));
+		addObject("PrintDateHeader",By.xpath("//th[@title='Print Date']"));
+		addObject("PrintedDateHeader",By.xpath("//th[@title='Printed Date']"));
+		addObject("FromPrintedDateTextBox",By.xpath("//span[text()='From Printed Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("ToPrintedDateTextBox",By.xpath("//span[text()='To Printed Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("FocusedCell",By.xpath("//tbody//tr/td[contains(@class,'cell-focused')]"));   
+		
+		//Ticket Search Criteria
+		
+		addObject("TicketSearchCriteriaTitle",By.xpath("//h1[text()='Ticket Search Criteria']"));
+		addObject("FromPrintDateTextBox",By.xpath("//span[text()='From Print Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("ToPrintDateTextBox",By.xpath("//span[text()='To Print Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("FromActiveDateTextBox",By.xpath("//span[text()='From Active Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("ToActiveDateTextBox",By.xpath("//span[text()='To Active Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("FromEndDateTextBox",By.xpath("//span[text()='From End Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("ToEndDateTextBox",By.xpath("//span[text()='To End Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("SearchButton",By.xpath("//div[@class='oj-dialog-footer']//span[text()='Search']"));
+		addObject("CancelButton",By.xpath("//oj-button[contains(@class,'oj-button-text-only oj-complete oj-hover')]//span[text()='Cancel']"));
+		addObject("PrintedDropDown",By.xpath("//oj-form-layout//div[15]//a[contains(@class,'oj-select-arrow')]"));
+		addObject("FromPrintedDateTextBox",By.xpath("//span[text()='From Printed Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("ToPrintedDateTextBox",By.xpath("//span[text()='To Printed Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("SearchLimitTextBox",By.xpath("//span[text()='Search Limit']//ancestor::div[@class='oj-flex']//input"));
+
+		//Printer Selection Pop-up
+		addObject("PrinterSelectionApplyButton",By.xpath("//div[@class='oj-dialog-footer']//oj-button[@on-click='[[applyClick]]']"));
+		addObject("OkButton",By.xpath("//oj-dialog[@id='sim-main-message-dialog']//span[text()='OK']"));
+		addObject("PrinterSelectionDropdown",By.xpath("//span[text()='Default Printer']/parent::div/following-sibling::a"));
+		addObject("PrintInfo",By.xpath("//span[contains(text(),'Print request submitted.')]"));
+
+		//Ticket Detail Screen 
+		
+		addObject("TicketDetailScreenTitle",By.xpath("//h3[text()='Ticket Detail']"));
+		addObject("ItemScanBox",By.xpath("//input[@id='input-item-scan-value|input']"));
+		addObject("ScanBoxArrow",By.xpath("//span[contains(@class,'sim-item-scan-icon')]"));
+		addObject("FormatTypeDropDown",By.xpath("//div[@id='oj-select-choice-input-format-type']//a[contains(@class,'oj-select-arrow')]"));
+		addObject("FormatTypeDropDownList",By.xpath("//div[@id='oj-select-choice-input-format']//a"));
+		addObject("PrintDateTextBox",By.xpath("//span[text()='Print Date']//ancestor::div[@class='oj-flex']//input"));
+		addObject("FormatDropDown",By.xpath("//a[contains(@class,'oj-select-arrow')]//following::a[2]"));
+		addObject("PrintQuantityTextBox",By.xpath("//input[@id='input-print-quantity|input']"));
+		addObject("ItemQuantityTextBox",By.xpath("//input[@id='input-item-quantity|input']"));
+		addObject("PrintedStatus",By.xpath("//input[@id='input-printed|input']"));
+		addObject("PrintedStatusValue",By.xpath("//oj-input-text[@id='input-printed']"));
+		addObject("SaveButton",By.xpath("//oj-button[@id='save-button']"));
+		addObject("DeleteButton",By.xpath("//oj-button[@id='delete-button']"));
+		addObject("YesButton",By.xpath("//oj-dialog[@id='sim-main-message-dialog']//span[text()='Yes']"));
+		addObject("NoButton",By.xpath("//oj-dialog[@id='sim-main-message-dialog']//span[text()='No']"));
+		addObject("BackButton",By.xpath("//span[contains(@class,'sim-icon-font sim-toolbar-back')]"));
+		addObject("PrintButton",By.id("print-button"));
+		addObject("ItemLabel",By.xpath("//span[@id='input-item|hint']"));
+		addObject("DescriptionLabel",By.xpath("//span[@id='input-item-description|hint']"));
+		addObject("PriceTypeLabel",By.xpath("//span[@id='input-price-type|hint']"));
+		addObject("OriginTypeLabel",By.xpath("//span[@id='input-origin-type|hint']"));
+		addObject("PrintQuantityLabel",By.xpath("//span[@id='input-print-quantity|hint']"));
+		addObject("CurrentPriceLabel",By.xpath("//span[@id='input-current-price|hint']"));
+		addObject("CountryOfManufactureLabel",By.xpath("//span[@id='input-country-of-mfr|hint']"));
+		addObject("PrintDefaultLabel",By.xpath("//label[text()='Print Default Quantity (SOH/Facings)']"));
+		addObject("ActiveDateLabel",By.xpath("//span[@id='input-active-date|hint']"));
+		addObject("EndDateLabel",By.xpath("//span[@id='input-end-date|hint']"));
+		addObject("UserLabel",By.xpath("//span[@id='input-user|hint']"));
+		addObject("ItemQuantityLabel",By.xpath("//span[@id='input-item-quantity|hint']"));
+		addObject("OverridePriceLabel",By.xpath("//span[@id='input-override-price|hint']"));
+		addObject("FormatTypeLabel",By.xpath("//span[@id='input-format-type|hint']"));
+		addObject("FormatLabel",By.xpath("//span[@id='input-format|hint']"));
+		addObject("CreateDateLabel",By.xpath("//span[@id='input-create-date|hint']"));
+		addObject("PrintDateLabel",By.xpath("//span[@id='input-print-date|hint']"));
+		addObject("PrintedLabel",By.xpath("//span[@id='input-printed|hint']"));
+		addObject("PrintedDateLabel",By.xpath("//span[@id='input-printed-date|hint']"));
+		addObject("ErrorMessage1",By.xpath("//oj-select-single[@id='input-format-type']//span[@class='oj-message-content']"));
+		addObject("ErrorMessage2",By.xpath("//oj-select-single[@id='input-format']//span[@class='oj-message-content']"));
+		addObject("ErrorMessage4",By.xpath("//oj-input-number[@id='input-print-quantity']//span[@class='oj-message-content']"));
+		addObject("ErrorMessage3",By.xpath("//oj-input-date[@id='input-print-date']//span[@class='oj-message-content']"));
+		addObject("DeleteMsg",By.xpath("//span[contains(text(),'Are you sure you want to delete the ticket?')]"));
+		addObject("ItemQuantityText",By.xpath("//oj-input-number[@id='input-item-quantity']"));
+		addObject("EditErrorMessage",By.xpath("//span[contains(text(),'Permission denied: ticket.edit.')]"));
+		addObject("OverridePriceTextBox",By.xpath("//input[@id='input-override-price|input']"));
+		addObject("CountryOfManufactureTextBox",By.xpath("//span[@id='ojChoiceId_input-country-of-mfr_selected']"));
+		addObject("FormatTypeTextBox",By.xpath("//span[contains(@id,'format-type_selected')]"));
+		addObject("FormatTextBox",By.xpath("//span[contains(@id,'format_selected')]"));
+		addObject("PrintDefaultQuantitybutton",By.xpath("//oj-switch[@id='input-default-soh']//div[@class='oj-switch-thumb']"));
+		addObject("PrintDefaultQuantityYes",By.xpath("//oj-validation-group[@id='detail-tracker']//span[contains(text(),'Yes')]"));
+		addObject("PrintDefaultQuantityNo",By.xpath("//oj-validation-group[@id='detail-tracker']//span[contains(text(),'No')]"));
+		addObject("PrintPopUpTitle",By.xpath("//h1[text()=\"Printer Selection\"]"));
+		addObject("PrintDropdown",By.xpath("//oj-select-one[@class='oj-text-field oj-complete oj-focus']//a[contains(@class,'oj-select-arrow')]"));
+		addObject("FormatDropDownList",By.xpath("//ul[@id='oj-listbox-results-input-format']//li"));
+		
+		//Security Permission of Tickets 
+		addObject("RoleNameLink",By.xpath("//a[contains(@class,'cell-descendant cell-link')]"));
+		addObject("FilterByRoleName",By.xpath("//div[text()='Role Name']//following ::input[1]"));
+		addObject("FilterByDataValue",By.xpath("//div[contains(text(),'Data Value')]//following:: input[3]"));
+		addObject("FilterByPermission",By.xpath("//div[contains(text(),'Permission')]//following:: input[2]"));
+		addObject("AssignedData",By.xpath("//td[contains(@id,'-col-assigned')]"));
+		addObject("AssigneSelectedButton",By.xpath("//span[contains(@class, 'assign-icon oj-button')]"));
+		addObject("RevokeSelectedButton",By.xpath("//span[contains(@class,'revoke-icon oj-button')]"));		
+		addObject("BackLink",By.xpath("//a[@class='jraf-hierarchy-back-link']"));
+		addObject("NavigationSearchBar",By.xpath("//input[@class='oj-combobox-input']"));
+		
+
+		//Ticket print format screen
+		addObject("TicketFormatTitle",By.xpath("//h3[@id='sim-screen-title']"));
+		addObject("TicketFormatRefreshButton",By.xpath("//oj-button[@id='refresh-button']"));
+		addObject("TicketFormatSaveButton",By.xpath("//oj-button[@id='save-button']"));
+		addObject("TicketFormatAddButton",By.xpath("//oj-button[@id='add-button']"));
+		addObject("TicketFormatDeleteButton",By.xpath("//oj-button[@id='delete-button']"));
+		addObject("TicketFormatDetailScreen",By.xpath("//div[contains(@class,'sim-screen-detail-side')]"));
+		addObject("TicketFormtDetlEditButton",By.xpath("//oj-button[@id='detail-edit-button']"));
+		addObject("TicketFormatDetailapplyButton",By.xpath("//oj-button[@id='detail-apply-button']"));
+		addObject("TicketFormatDetailCancelButton",By.xpath("//oj-button[@id='detail-cancel-button']"));
+		addObject("TicketFormatDetailTypeLabel",By.xpath("//oj-label[@id='input-type-labelled-by']"));
+		addObject("TicketFormatDetailDescLabel",By.xpath("//oj-label[@id='input-description-labelled-by']"));
+		addObject("TicketFormatDetailDefaultLabel",By.xpath("//label[text()='Default']"));
+		addObject("TicketFormatDefaultPrntLabel",By.xpath("//oj-label[@id='input-default-printer-labelled-by']"));
+		addObject("TicketFormatDetailFrmtType",By.xpath("//oj-label[@id='input-format-ref-labelled-by']"));
+		addObject("TicketFormatDetailZpl",By.xpath("//label[@id='input-zpl-labelled-by|label']"));
+		addObject("BackLink",By.xpath("jraf-hierarchy-back-link"));
+		addObject("DetailTypeErrorMsg",By.xpath("//div[@id='ojChoiceId_input-type']//child::div[@class='oj-message-summary']"));
+		addObject("DetailDescriptionErrorMsg",By.xpath("//oj-input-text[@id='input-description']//child::div[@class='oj-message-summary']"));
+		addObject("DetaileTypeDropDwn",By.xpath("//div[@id='oj-select-choice-input-type']"));
+		addObject("DescriptionInput",By.xpath("//input[@id='input-description|input']"));
+		addObject("DetailsDefaultPrntsDropDown",By.xpath("//oj-select-one[@id='input-default-printer']"));
+		addObject("DefaultPrinterFrstOption",By.xpath("//ul[contains(@id,'oj-listbox-results')]//li[2]"));
+		addObject("DefaultPrinterSecOption",By.xpath("//ul[contains(@id,'oj-listbox-results')]//li[3]"));
+		addObject("DetailFormatInput",By.id("input-format-ref|input"));
+		addObject("DetailZplDrpDwn",By.xpath("//div[@id='oj-select-choice-input-zpl']"));
+		addObject("DetailZplFrstOption",By.xpath("//ul[contains(@id,'oj-listbox-results')]//li[2]"));
+		addObject("DetailZplSecOption",By.xpath("//ul[contains(@id,'oj-listbox-results')]//li[3]"));
+		addObject("DiscriptionFilter",By.xpath("//oj-lux-grid[@id='sim-screen-grid-comp']//input[contains(@id,'input-column-filter-description')]"));
+		addObject("GridHighLightRecord",By.xpath("//mark[contains(@class,'grid-highlight')]"));
+		addObject("DetailConfirmationDialog",By.xpath("//span[@class='oj-dialog-title'and text()='Confirmation']"));
+		addObject("ConfirmYesButton",By.xpath("//oj-dialog[@id='sim-main-message-dialog']//span[text()='Yes']"));
+		addObject("ConfirmNoButton",By.xpath("//oj-dialog[@id='sim-main-message-dialog']//span[text()='No']"));
+		addObject("DiscriptionErrMsg",By.xpath("//oj-input-text[@id='input-description']//child::div[@class='oj-message-summary']"));
+		addObject("TypeAllRows",By.xpath("//tr[contains(@id,'-group-all')]"));
+
+		
+		//Grid Fields Filter box
+		addObject("ItemFilterBox",By.xpath("//input[contains(@id,'itemId')]"));
+		addObject("DescriptionFilterBox",By.xpath("//input[contains(@id,'Description')]"));
+		addObject("FormatTypeFilterBox",By.xpath("//input[contains(@id,'ticketFormatType')]"));
+		addObject("OriginTypeFilterBox",By.xpath("//input[contains(@id,'originType')]"));
+		addObject("PrintQuantityFilterBox",By.xpath("//input[contains(@id,'ticketCount')]"));
+		addObject("PriceTypeFilterBox",By.xpath("//input[contains(@id,'priceType')]"));
+		addObject("ActiveDateFilterBox",By.xpath("//input[contains(@id,'priceActiveDate')]"));
+		addObject("EndDateFilterBox",By.xpath("//input[contains(@id,'priceExpireDate')]"));
+		addObject("PrintedFilterBox",By.xpath("//input[contains(@id,'printed')]"));
+		addObject("PrintDateFilterBox",By.xpath("//input[contains(@id,'printDate')]"));
+		
+		addObject("ItemRecord", By.xpath("//a[contains(@id,'itemId-link')]"));
+		addObject("DescriptionRecord", By.xpath("//td[contains(@id,'longDescription')]"));
+		addObject("FormatTypeRecord", By.xpath("//td[contains(@id,'ticketFormatType')]"));
+		addObject("OriginTypeRecord", By.xpath("//td[contains(@id,'originType')]"));
+		addObject("PrintQuantityRecord", By.xpath("//td[contains(@id,'ticketCount')]"));
+		addObject("PriceTypeRecord", By.xpath("//td[contains(@id,'priceType')]"));
+		addObject("ActiveDateRecord", By.xpath("//td[contains(@id,'priceActiveDate')]"));
+		addObject("EndDateRecord", By.xpath("//td[contains(@id,'priceExpireDate')]"));
+		addObject("PrintedRecord", By.xpath("//td[contains(@id,'printed')]"));
+		addObject("PrintDateRecord", By.xpath("//td[contains(@id,'printDate')]"));
+		
+
+	}
+}

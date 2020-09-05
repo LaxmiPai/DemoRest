@@ -1,0 +1,77 @@
+package com.oracle.sim.pages.DataSetup;
+import org.openqa.selenium.By;
+
+import com.oracle.sim.pages.Base.SimBasePage;
+public class InventoryAdjustmentReasonsPage extends SimBasePage {
+
+	
+	public InventoryAdjustmentReasonsPage() throws Exception {
+		// TODO Auto-generated constructor stub
+		super();
+		
+		//Button and Icons of Inventory Adjustment Reasons Screen
+	addObject("RefreshButton", By.xpath("//span[text()='Refresh']"));
+	addObject("Title", By.xpath("//h3[text()='Inventory Adjustment Reasons']"));
+	addObject("AddIcon", By.id("add-button"));
+	addObject("DeleteIcon", By.xpath("//oj-button[@id='remove-button']"));
+	
+	addObject("ApplyButton", By.id("detail-apply-button"));
+	addObject("CancelButton",By.id("detail-cancel-button"));
+	addObject("SaveIcon", By.id("save-button"));
+	addObject("YesButton", By.xpath("//span[text()='Yes']"));
+	addObject("NoButton", By.xpath("//span[text()='No']"));
+	addObject("EditIcon", By.id("detail-edit-button"));
+	
+	//Inventory Adjustment Reasons Screen fields 
+	
+	addObject("CodeField",By.xpath("//input[@id='input-code|input']"));
+	addObject("DescriptionField",By.xpath("//textarea[@id='input-description|input']"));
+	addObject("UseUISwitchMenu",By.xpath("//div[@class='oj-switch-thumb']"));
+	addObject("DispositionDropdown",By.xpath("//a[@class='oj-select-arrow oj-component-icon oj-clickable-icon-nocontext oj-select-open-icon']"));
+	addObject("ToSubBucketDropdown",By.xpath("//div[@id='oj-select-choice-input-to-sub-bucket']"));
+	addObject("FromSubBucketDropdown",By.xpath("//div[@id='oj-select-choice-input-from-sub-bucket']"));
+	addObject("PublishSwitchMenu",By.xpath("//oj-switch[@id='input-publish']//div[@class='oj-switch-thumb']"));
+	
+	//Filter and Grid Field X-paths
+	
+	addObject("FilterByDescription",By.xpath("//div[text()='Description']//following ::input[2]"));
+	addObject("FilterByCode",By.xpath("//div[text()='Code']//following ::input[1]"));
+	addObject("GridHighLight",By.xpath("//mark[contains(@class,'grid-highlight')]"));
+	
+	//Error messages X-paths
+	addObject("NorecordsMsg", By.xpath("//span[@class='rowset-message-text']"));
+	addObject("RemoveErMsg",By.xpath("//span[contains(text(),'The selected records cannot be deleted since one o')]"));
+	
+	//Title and Labels Xpaths
+	addObject("RoleNameLabel",By.xpath("//span[text()='Role Name']"));
+	
+	
+	//Navigation and Security Pages
+	addObject("Navigation",By.xpath("//a[@class='jraf-menu-pin-link']"));
+	addObject("BackLink",By.xpath("//a[@class='jraf-hierarchy-back-link']"));
+	addObject("SecurityPage",By.xpath("//span[text()='Security']"));
+	addObject("RoleMaintenancePage",By.xpath("//span[text()='Role Maintenance']"));
+	addObject("FilterByRoleName",By.xpath("//div[text()='Role Name']//following ::input[1]"));
+	addObject("RoleNameLink",By.xpath("//a[contains(@class,'cell-descendant cell-link')]"));
+	addObject("FilterByDataValue",By.xpath("//div[contains(text(),'Data Value')]//following:: input[3]"));
+	addObject("Table",By.xpath("//table[@class='pgbu-grid']"));
+	
+	addObject("AssignedCheckBox",By.xpath("//label[contains(@class,'sim-icon-font')]"));
+	addObject("AssignedData",By.xpath("//td[contains(@id,'-col-assigned')]"));
+	addObject("AssigneSelectedButton",By.xpath("//span[contains(@class, 'assign-icon oj-button')]"));
+	addObject("RevokeSelectedButton",By.xpath("//span[contains(@class,'revoke-icon oj-button')]"));
+	
+	//Remove Reasons
+	addObject("FilterBySystem",By.xpath("//div[text()='Description']//following ::input[8]"));
+	addObject("NoRecordDelete",By.xpath("//span[contains(text(),'No records selected. Select one or more records to')]"));
+	addObject("OkButton",By.xpath("//button[@class='oj-button-button oj-component-initnode']"));
+	
+	//Refresh Warning Msg
+	addObject("RefreshWarningMsg",By.xpath("//span[contains(text(),'If you continue, your changes will not be saved. D')]"));
+	addObject("OKfooterButton",By.xpath("//div[@class='oj-dialog-footer']//following:: oj-button[1]"));
+	addObject("CancelfooterButton",By.xpath("//div[@class='oj-dialog-footer']//following:: oj-button[2]"));
+	
+	addObject("NofoundMsg",By.xpath("//div[text()='No matches found']"));
+	
+	}
+}

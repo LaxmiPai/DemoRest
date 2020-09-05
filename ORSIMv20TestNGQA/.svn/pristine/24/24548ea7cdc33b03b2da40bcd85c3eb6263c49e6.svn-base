@@ -1,0 +1,190 @@
+//Author : shhg
+
+package com.oracle.sim.testcases.AdminScreens;
+
+import java.util.Map;
+import java.util.logging.Logger;
+
+import org.testng.ITestContext;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.oracle.core.dataProvider.ExcelReader;
+import com.oracle.core.utils.PropertyReader;
+import com.oracle.sim.pageFactory.PageFactory;
+import com.oracle.sim.pages.Base.SimBasePage;
+import com.oracle.sim.utils.SIMWebdriverBase;
+
+public class StoreAdminUIAndNavigation {
+	public static Logger logger=Logger.getLogger(StoreAdminUIAndNavigation.class.getName());
+	public static PropertyReader propReader = new PropertyReader();
+	PageFactory pageFactory = new PageFactory();
+	
+	SimBasePage LoginPage;
+	SimBasePage HomePage;
+	SimBasePage RoleMaintenancePage;
+	SimBasePage StoreAdminPage;
+		
+	@BeforeClass()
+	public void setup(ITestContext context) throws Exception{
+		logger.info("TestCase Name: In before class");
+		SIMWebdriverBase.loadInitialURL(context);
+		LoginPage=pageFactory.initialize("LoginPage");
+		HomePage=pageFactory.initialize("HomePage");
+		RoleMaintenancePage=pageFactory.initialize("RoleMaintenancePage");
+		StoreAdminPage=pageFactory.initialize("StoreAdministrationPage");
+		LoginPage.explicitWaitForVisibility("Username");
+		LoginPage.enterIntoTextBox("Username", LoginPage.getProperty("Username"));
+		LoginPage.enterIntoTextBox("Password", LoginPage.getProperty("Password"));
+		LoginPage.click("SignIn");
+		HomePage.verifyTextValue("Title", HomePage.getProperty("Title"));
+		HomePage.verifyTextValue("UserMenu", HomePage.getProperty("Username"));
+		HomePage.storeIdCheck();
+		HomePage.explicitWaitForElementToBeClickable("Navigation");
+		HomePage.click("Navigation");
+	}
+	@DataProvider (name="StoreAdminAccessTestData")
+	public Object[][] getStoreAdminAccessTestData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("StoreAdminTestData"), "Permission");
+		return testObjArray;
+	}
+	
+	@Test(dataProvider="StoreAdminAccessTestData", priority=1)
+	public void verifyRole(Map<String,String> map) throws Exception{
+	//Navigating to role maintenance page
+	logger.info("Method Name: verifyRole");
+	HomePage.click("Security");
+	HomePage.click("RoleMaintenance");
+		
+	//Verifying RoleMaintenance Page Title
+ 	RoleMaintenancePage.explicitWaitForElementToBeClickable("Title");
+	RoleMaintenancePage.verifyTextValue("Title",map.get("Title"));
+		
+	//Verifying a user permission
+	String roleName=propReader.getApplicationproperty("UserRole");
+	logger.info(roleName);
+	RoleMaintenancePage.verifyUserRole(roleName, map.get("AccessStoreAdminStore"), map.get("AssignedDataNo"));
+	
+	}
+	
+	@DataProvider (name="StoreAdminUITestData")
+	public Object[][] getStoreAdminUITestData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("StoreAdminTestData"), "StoreAdminUI");
+		return testObjArray;
+	}	
+	
+	@Test(dataProvider = "StoreAdminUITestData", priority=2)
+	public void verifyStoreAdminUI(Map<String, String> map) throws Exception {
+		
+		logger.info("Method Name: verifyStoreAdminUI");
+		StoreAdminPage.explicitWaitForElementToBeClickable("AdminMenu");
+		StoreAdminPage.click("AdminMenu");
+		StoreAdminPage.explicitWaitForElementToBeClickable("ConfigurationMenu");
+		StoreAdminPage.click("ConfigurationMenu");
+		StoreAdminPage.explicitWaitForElementToBeClickable("StoreAdministrationMenu");
+		StoreAdminPage.click("StoreAdministrationMenu");
+		
+		//Screen elements verification
+		StoreAdminPage.verifyTextValue("ScreenHeading", map.get("ScreenHeadingStore"));
+		StoreAdminPage.isElementPresent("SelectStores");
+		StoreAdminPage.isEnabled("SelectStores");
+		StoreAdminPage.verifyTextValue("SelectedStoreText", map.get("SelectedStore"));
+		StoreAdminPage.isElementPresent("SaveButton");
+		StoreAdminPage.verifyElementIsDisabled("SaveButton");
+		StoreAdminPage.isElementPresent("RefreshButton");
+		StoreAdminPage.isEnabled("RefreshButton");
+		StoreAdminPage.isElementPresent("RestoreDefaults");
+		StoreAdminPage.isEnabled("RestoreDefaults");
+		StoreAdminPage.explicitWaitForElementToBeClickable("GridViewMenu");
+		StoreAdminPage.click("GridViewMenu");
+		StoreAdminPage.explicitWaitForElementToBeClickable("ResetView");
+		StoreAdminPage.verifyTextValue("ResetView",map.get("ResetView"));
+		StoreAdminPage.verifyTextValue("ColumnFilter",map.get("ColumnFilter"));
+		StoreAdminPage.verifyTextValue("ExportToCsv",map.get("ExportToCsv"));
+		StoreAdminPage.click("GridViewMenu");
+		
+		//Column verification
+		StoreAdminPage.verifyTextValue("TopicColumn", map.get("Topic"));
+		StoreAdminPage.verifyTextValue("OptionColumn", map.get("Option"));
+		StoreAdminPage.verifyTextValue("ValueColumn", map.get("Value"));
+		
+		//Edit section verification
+		StoreAdminPage.verifyTextValue("EditHeading", map.get("EditHeading"));
+		StoreAdminPage.isElementPresent("EditButton");
+		StoreAdminPage.isElementPresent("ApplyButton");
+		StoreAdminPage.isElementPresent("CancelButton");
+		StoreAdminPage.verifyElementIsDisabled("EditButton");
+		StoreAdminPage.verifyElementIsDisabled("ApplyButton");
+		StoreAdminPage.verifyElementIsDisabled("CancelButton");
+		StoreAdminPage.verifyTextValue("TopicEdit", map.get("TopicField"));
+		StoreAdminPage.verifyTextValue("OptionEdit", map.get("OptionField"));
+		
+		//Sort verification topic column
+		StoreAdminPage.explicitWaitForElementToBeClickable("TopicColumn");
+		StoreAdminPage.click("TopicColumn");
+		StoreAdminPage.implicitWait();
+		StoreAdminPage.click("TopicColumn");
+		StoreAdminPage.implicitWait();
+		StoreAdminPage.click("TopicColumn");
+		StoreAdminPage.implicitWait();
+		StoreAdminPage.columnSorting("TopicColumnValues", "TopicColumn", "ascending", "String");
+		
+		//Sort verification Option column
+		StoreAdminPage.explicitWaitForElementToBeClickable("OptionColumn");
+		StoreAdminPage.click("OptionColumn");
+		StoreAdminPage.implicitWait();
+		StoreAdminPage.columnSorting("OptionColumnValues", "OptionColumn", "ascending", "String");
+		
+		//Sort verification value column
+		StoreAdminPage.explicitWaitForElementToBeClickable("ValueColumn");
+		StoreAdminPage.click("ValueColumn");
+		StoreAdminPage.implicitWait();
+		StoreAdminPage.columnSorting("ValueColumnValues", "ValueColumn", "ascending", "String");
+		
+		//To verify filtering of column
+//		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+		StoreAdminPage.explicitWaitForElementToBeClickable("TopicColumnFilter");
+		StoreAdminPage.click("TopicColumnFilter");
+		StoreAdminPage.enterIntoTextBox("TopicColumnFilter", map.get("TopicFilter"));
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+		StoreAdminPage.verifyTableRowContentsOfColumn("TopicColumnValues", map.get("TopicFilter"));
+		StoreAdminPage.clearElement("TopicColumnFilter");
+		StoreAdminPage.click("RefreshButton");
+		
+		//To verify filtering of column
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+		StoreAdminPage.explicitWaitForElementToBeClickable("OptionColumnFilter");
+		StoreAdminPage.click("OptionColumnFilter");
+		StoreAdminPage.enterIntoTextBox("OptionColumnFilter", map.get("OptionFilter"));
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+		StoreAdminPage.verifyTableRowContentsOfColumn("OptionColumnValues", map.get("OptionFilter"));
+		StoreAdminPage.clearElement("OptionColumnFilter");
+		StoreAdminPage.click("RefreshButton");
+		
+		//To verify filtering of column
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+		StoreAdminPage.explicitWaitForElementToBeClickable("ValueColumnFilter");
+		StoreAdminPage.click("ValueColumnFilter");
+		StoreAdminPage.enterIntoTextBox("ValueColumnFilter", map.get("ValueFilter"));
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+		StoreAdminPage.verifyTableRowContentsOfColumn("ValueColumnValues", map.get("ValueFilter"));
+	}	
+		@AfterClass()
+		public void tearDown() {
+			try {
+				logger.info("After Test: Logging out");
+				HomePage.click("UserMenu");
+				HomePage.explicitWaitForVisibility("Logout");
+				HomePage.click("Logout");
+				HomePage.explicitWaitForVisibility("Yes");
+				HomePage.click("Yes");
+			}
+			finally {
+				SIMWebdriverBase.close();
+			}
+		
+}
+}
+

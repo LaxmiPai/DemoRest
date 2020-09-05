@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>TestNG Report</title>
+<style type="text/css">
+table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}
+td,th {border:1px solid #009;padding:.25em .5em}
+.result th {vertical-align:bottom}
+.param th {padding-left:1em;padding-right:1em}
+.param td {padding-left:.5em;padding-right:2em}
+.stripe td,.stripe th {background-color: #E6EBF9}
+.numi,.numi_attn {text-align:right}
+.total td {font-weight:bold}
+.passedodd td {background-color: #0A0}
+.passedeven td {background-color: #3F3}
+.skippedodd td {background-color: #CCC}
+.skippedodd td {background-color: #DDD}
+.failedodd td,.numi_attn {background-color: #F33}
+.failedeven td,.stripe .numi_attn {background-color: #D00}
+.stacktrace {white-space:pre;font-family:monospace}
+.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}
+</style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" class="testOverview">
+<tr><th>Test</th><th>Methods<br/>Passed</th><th>Scenarios<br/>Passed</th><th># skipped</th><th># failed</th><th>Error messages</th><th>Parameters</th><th>Start<br/>Time</th><th>End<br/>Time</th><th>Total<br/>Time</th><th>Included<br/>Groups</th><th>Excluded<br/>Groups</th></tr>
+<tr><td style="text-align:left;padding-right:2em"><a href="#t1">PrinterSetup.Add/Edit/Delete Printer</a></td><td class="numi">4</td><td class="numi">4</td><td class="numi">0</td><td class="numi">0</td><td class="numi"></td>
+<td class="numi">{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName, ManifestDefault=No} | 
+{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes} | 
+{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName, ManifestDefault=No} | 
+{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes} | 
+</td>
+<td class="numi">6 Dec 2019 10:06:33 GMT</td></td>
+<td class="numi">6 Dec 2019 10:08:17 GMT</td></td>
+<td class="numi">103.4 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+</table>
+<table cellspacing="0" cellpadding="0" class="methodOverview" id="summary">
+<tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Time<br/>(ms)</th></tr>
+<tr id="t1"><th colspan="5">PrinterSetup.Add/Edit/Delete Printer &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="4">com.oracle.sim.testcases.PrinterSetup.Printer</td><td><a href="#m1"><b>printerAdd</b>  </a></td><td class="numi">1</td><td class="numi">0.35665</td></tr><tr class="passedodd"><td><a href="#m2"><b>printerSearch</b>  </a></td><td class="numi">1</td><td class="numi">0.03911666666666667</td></tr><tr class="passedodd"><td><a href="#m3"><b>printerEdit</b>  </a></td><td class="numi">1</td><td class="numi">0.22221666666666667</td></tr><tr class="passedodd"><td><a href="#m4"><b>printerDelete</b>  </a></td><td class="numi">1</td><td class="numi">0.31216666666666665</td></tr>
+</table>
+<h1>PrinterSetup.Add/Edit/Delete Printer</h1>
+<h2 id="m1">com.oracle.sim.testcases.PrinterSetup.Printer:printerEdit</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Param.1</th></tr>
+<tr class="param stripe"><td>{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName, ManifestDefault=No}</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m2">com.oracle.sim.testcases.PrinterSetup.Printer:printerSearch</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Param.1</th></tr>
+<tr class="param stripe"><td>{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes}</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m3">com.oracle.sim.testcases.PrinterSetup.Printer:printerDelete</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Param.1</th></tr>
+<tr class="param stripe"><td>{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName, ManifestDefault=No}</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m4">com.oracle.sim.testcases.PrinterSetup.Printer:printerAdd</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Param.1</th></tr>
+<tr class="param stripe"><td>{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes}</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<center> Report customized by Hector Flores [hectorfb@gmail.com] </center>
+</body></html>

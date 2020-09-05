@@ -1,0 +1,22 @@
+package com.oracle.sim.pages.Configuration;
+
+import org.openqa.selenium.By;
+
+import com.oracle.sim.pages.Base.SimBasePage;
+
+public class SystemAdministration extends SimBasePage {
+	public SystemAdministration() throws Exception {
+		super();
+		addObject("Title",By.xpath("//h3[text()='System Administration']"));
+		addObject("TableFirstRow",By.xpath("//tbody//tr[1]//td"));
+		addObject("FilterOption",By.xpath("//oj-lux-grid[@id='sim-screen-grid-comp']//input[contains(@id,'input-column-filter-description')]"));
+		addObject("ValueFirstRowRecord",By.xpath("//td[contains(@id,'-col-displayValue')]"));
+		addObject("EditButton",By.xpath("//oj-button[@id='detail-edit-button']"));
+		addObject("ValueSwitchButton",By.xpath("//oj-switch[@id='input-detail-boolean']"));
+		addObject("ApplyButton",By.xpath("//oj-button[@id='detail-apply-button']"));
+		addObject("SaveButton",By.xpath("//oj-button[@id='save-button']"));
+		addObject("YesButton",By.xpath("//oj-dialog[@id='sim-main-message-dialog']//span[text()='Yes']"));	
+		addObject("GridRecord",By.xpath("//mark[@class='grid-highlight']"));
+		addObject("BackLink",By.xpath("//a[contains(@class,'jraf-hierarchy-back-link')]"));
+	}
+}

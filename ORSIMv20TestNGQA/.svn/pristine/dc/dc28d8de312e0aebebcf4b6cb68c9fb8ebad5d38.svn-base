@@ -1,0 +1,204 @@
+//Author : shhg
+
+package com.oracle.sim.testcases.AdminScreens;
+
+import java.util.Map;
+import java.util.logging.Logger;
+
+import org.testng.ITestContext;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.oracle.core.dataProvider.ExcelReader;
+import com.oracle.core.utils.PropertyReader;
+import com.oracle.sim.pageFactory.PageFactory;
+import com.oracle.sim.pages.Base.SimBasePage;
+import com.oracle.sim.utils.SIMWebdriverBase;
+
+public class StoreAdminDefaultPermissionEdit {
+	public static Logger logger=Logger.getLogger(StoreAdminPermissionEdit.class.getName());
+	public static PropertyReader propReader = new PropertyReader();
+	PageFactory pageFactory = new PageFactory();
+	
+	SimBasePage LoginPage;
+	SimBasePage HomePage;
+	SimBasePage RoleMaintenancePage;
+	SimBasePage StoreAdminDefaultPage;
+		
+	@BeforeClass()
+	public void setup(ITestContext context) throws Exception{
+		logger.info("TestCase Name: "+logger.getName());
+		SIMWebdriverBase.loadInitialURL(context);
+		LoginPage=pageFactory.initialize("LoginPage");
+		HomePage=pageFactory.initialize("HomePage");
+		RoleMaintenancePage=pageFactory.initialize("RoleMaintenancePage");
+		StoreAdminDefaultPage=pageFactory.initialize("StoreAdministrationPage");
+		LoginPage.explicitWaitForVisibility("Username");
+		LoginPage.enterIntoTextBox("Username", LoginPage.getProperty("Username"));
+		LoginPage.enterIntoTextBox("Password", LoginPage.getProperty("Password"));
+		LoginPage.click("SignIn");
+		HomePage.verifyTextValue("Title", HomePage.getProperty("Title"));
+		HomePage.verifyTextValue("UserMenu", HomePage.getProperty("Username"));
+		HomePage.storeIdCheck();
+		HomePage.explicitWaitForElementToBeClickable("Navigation");
+		HomePage.click("Navigation");
+	}
+	@DataProvider (name="StoreAdminAccessTestData")
+	public Object[][] getSystemAdminAccessTestData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("StoreAdminTestData"), "Permission");
+		return testObjArray;
+	}
+	
+	@Test(dataProvider="StoreAdminAccessTestData", priority=1)
+	public void verifyRole(Map<String,String> map) throws Exception{
+	//Navigating to role maintenance page
+	logger.info("Method Name: verifyRole");
+	HomePage.click("Security");
+	HomePage.click("RoleMaintenance");
+		
+	//Verifying RoleMaintenance Page Title
+ 	RoleMaintenancePage.explicitWaitForElementToBeClickable("Title");
+	RoleMaintenancePage.verifyTextValue("Title",map.get("Title"));
+		
+	//Verifying a user permission
+	String roleName=propReader.getApplicationproperty("UserRole");
+	logger.info(roleName);
+	RoleMaintenancePage.verifyUserRole(roleName, map.get("AccessStoreAdminDefault"), map.get("AssignedDataNo"));
+	
+	}
+	
+	@DataProvider (name="StoreAdminDefaultEditTestData")
+	public Object[][] getStoreAdminDefaultEditTestData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("StoreAdminTestData"), "StoreEdit");
+		return testObjArray;
+	}	
+	
+	@Test(dataProvider = "StoreAdminDefaultEditTestData", priority=2)
+	public void verifySystemAdminDefaultEdit(Map<String, String> map) throws Exception {
+		
+		logger.info("Method Name: verifyStoreDefaultAdminEdit");
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("AdminMenu");
+		StoreAdminDefaultPage.click("AdminMenu");
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("ConfigurationMenu");
+		StoreAdminDefaultPage.click("ConfigurationMenu");
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("StoreAdministrationDefaultMenu");
+		StoreAdminDefaultPage.click("StoreAdministrationDefaultMenu");
+		
+		//Screen elements verification
+		StoreAdminDefaultPage.verifyTextValue("ScreenHeading", map.get("ScreenHeadingDefault"));
+		StoreAdminDefaultPage.click("TopicColumnFilter");
+		StoreAdminDefaultPage.enterIntoTextBox("TopicColumnFilter", map.get("EditTopic"));
+		StoreAdminDefaultPage.click("OptionColumnFilter");
+		StoreAdminDefaultPage.enterIntoTextBox("OptionColumnFilter", map.get("EditPermission"));
+		StoreAdminDefaultPage.click("FirstRecord");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+		StoreAdminDefaultPage.click("EditButton");
+		
+		//Verifying error when no data is entered in 'Value' field
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("DaysValue");
+		StoreAdminDefaultPage.click("DaysValue");
+		StoreAdminDefaultPage.clearElement("DaysValue");
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("ApplyButton");
+		StoreAdminDefaultPage.click("ApplyButton");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+//		StoreAdminDefaultPage.explicitWaitForVisibility("Error");
+		StoreAdminDefaultPage.verifyTextValue("Error", map.get("MandatoryError"));
+		
+		//Verifying error when alphabet is entered in 'Value' field
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("DaysValue");
+		StoreAdminDefaultPage.click("DaysValue");
+		StoreAdminDefaultPage.clearElement("DaysValue");
+		StoreAdminDefaultPage.enterIntoTextBox("DaysValue", map.get("InvalidValue"));
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("ApplyButton");
+		StoreAdminDefaultPage.click("ApplyButton");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+//		StoreAdminDefaultPage.explicitWaitForVisibility("Error");
+		StoreAdminDefaultPage.verifyTextValue("Error", map.get("InvalidError"));
+		
+		//Verifying error when negative value is entered in 'Value' field
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("DaysValue");
+		StoreAdminDefaultPage.click("DaysValue");
+    	StoreAdminDefaultPage.clearElement("DaysValue");
+		StoreAdminDefaultPage.enterIntoTextBox("DaysValue", map.get("NegativeValue"));
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("ApplyButton");
+		StoreAdminDefaultPage.click("ApplyButton");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+//		StoreAdminDefaultPage.explicitWaitForVisibility("Error");
+		StoreAdminDefaultPage.verifyTextValue("Error", map.get("NegativeError"));
+		
+		//Verifying error when higher value is entered in 'Value' field
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("DaysValue");
+		StoreAdminDefaultPage.click("DaysValue");
+		StoreAdminDefaultPage.clearElement("DaysValue");
+		StoreAdminDefaultPage.enterIntoTextBox("DaysValue", map.get("HighValue"));
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("ApplyButton");
+		StoreAdminDefaultPage.click("ApplyButton");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+//		StoreAdminDefaultPage.explicitWaitForVisibility("Error");
+		StoreAdminDefaultPage.verifyTextValue("Error", map.get("HighError"));
+		
+		//Entering valid value and saving the change
+		StoreAdminDefaultPage.click("DaysValue");
+		StoreAdminDefaultPage.clearElement("DaysValue");
+		StoreAdminDefaultPage.enterIntoTextBox("DaysValue", map.get("EditDays"));
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("ApplyButton");
+		StoreAdminDefaultPage.click("ApplyButton");
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("SaveButton");
+		StoreAdminDefaultPage.click("SaveButton");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+		StoreAdminDefaultPage.verifyTextValue("SaveMessage", map.get("SaveConfirm"));
+		StoreAdminDefaultPage.click("SaveConfirm");
+		
+		//Reverting the change for further automation runs
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+		StoreAdminDefaultPage.click("TopicColumnFilter");
+		StoreAdminDefaultPage.enterIntoTextBox("TopicColumnFilter", map.get("EditTopic"));
+		StoreAdminDefaultPage.click("OptionColumnFilter");
+		StoreAdminDefaultPage.enterIntoTextBox("OptionColumnFilter", map.get("EditPermission"));
+		StoreAdminDefaultPage.click("FirstRecord");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+		StoreAdminDefaultPage.click("EditButton");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+		String Topic = StoreAdminDefaultPage.getAttributeValue("TopicValue", "value");
+		StoreAdminDefaultPage.verifyValuesAreEqual(Topic, map.get("ExpectedTopic"));
+		String Value = StoreAdminDefaultPage.getAttributeValue("OptionValue", "value");
+		StoreAdminDefaultPage.verifyValuesAreEqual(Value, map.get("ExpectedOption"));
+		StoreAdminDefaultPage.click("DaysValue");
+		StoreAdminDefaultPage.clearElement("DaysValue");
+		StoreAdminDefaultPage.enterIntoTextBox("DaysValue", map.get("OldEditDays"));
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("ApplyButton");
+		StoreAdminDefaultPage.click("ApplyButton");
+		StoreAdminDefaultPage.explicitWaitForElementToBeClickable("SaveButton");
+		StoreAdminDefaultPage.click("SaveButton");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+		StoreAdminDefaultPage.verifyTextValue("SaveMessage", map.get("SaveConfirm"));
+		StoreAdminDefaultPage.click("SaveConfirm");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+		StoreAdminDefaultPage.click("TopicColumnFilter");
+		StoreAdminDefaultPage.enterIntoTextBox("TopicColumnFilter", map.get("EditTopic"));
+		StoreAdminDefaultPage.click("OptionColumnFilter");
+		StoreAdminDefaultPage.enterIntoTextBox("OptionColumnFilter", map.get("EditPermission"));
+		StoreAdminDefaultPage.click("FirstRecord");
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+		String oldValue = StoreAdminDefaultPage.getAttributeValue("DaysValue", "value");
+		StoreAdminDefaultPage.verifyValuesAreEqual(oldValue, map.get("OldEditDays"));
+		Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+		
+}
+	@AfterClass()
+	public void tearDown() {
+		try {
+			logger.info("After Test: Logging out");
+			HomePage.click("UserMenu");
+			HomePage.explicitWaitForVisibility("Logout");
+			HomePage.click("Logout");
+			HomePage.explicitWaitForVisibility("Yes");
+			HomePage.click("Yes");
+		}
+		finally {
+			SIMWebdriverBase.close();
+		}
+}
+}

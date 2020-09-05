@@ -1,0 +1,34 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ORSIM GWT UI Tests">
+	<listeners>
+		<listener
+			class-name="com.oracle.core.reports.ExtentReporterNG" />
+		<listener
+			class-name="com.oracle.core.reports.TestNGCustomReportListener" />
+		<listener
+			class-name="com.oracle.core.reports.TestScreenshotListener" />
+	</listeners>
+
+
+	<!-- <test name="Homepage.Logout"> <classes> <class name="com.oracle.sim.testcases.login.LogoutTestcase" 
+		/> </classes> </test> -->
+
+<!-- 	<test name="PrinterSetup.Add/Edit/Delete Printer">
+		<classes>
+			<class name="com.oracle.sim.testcases.PrinterSetup.Printer" />
+		</classes>
+	</test>  -->
+	
+	<test name="PackageSizeSetup.Add/Edit/Delete PackageSize">
+		<classes>
+			<class name="com.oracle.sim.testcases.Configuration.PackageSizeSetup" />
+		</classes>
+	</test>
+
+
+	<!-- <test name="Customer.CustomerLookupOrEdit.AddAddress"> <classes> <class 
+		name="com.oracle.orce.testcases.Customer.CustomerLookupOrEdit.AddAddress" 
+		/> </classes> </test> -->
+
+
+</suite>

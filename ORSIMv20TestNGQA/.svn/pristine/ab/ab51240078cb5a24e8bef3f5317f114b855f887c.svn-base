@@ -1,0 +1,184 @@
+package com.oracle.sim.testcases.ItemBasket;
+
+/**
+ * @author vidhsank
+ *
+ * 
+ */
+
+import java.util.Map;
+import java.util.logging.Logger;
+
+import org.testng.ITestContext;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.oracle.core.dataProvider.ExcelReader;
+import com.oracle.core.utils.PropertyReader;
+import com.oracle.sim.pageFactory.PageFactory;
+import com.oracle.sim.pages.Base.SimBasePage;
+import com.oracle.sim.utils.SIMWebdriverBase;
+
+public class ItemBasketSearchCriteriahHierarchyDepartment {
+	public static Logger logger = Logger.getLogger(ItemBasketSearchCriteriahHierarchyDepartment.class.getName());
+	protected static PropertyReader propReader = new PropertyReader();
+	PageFactory pagefactory=new PageFactory();
+	SoftAssert softAssertion = new SoftAssert();
+
+	SimBasePage LoginPage;
+	SimBasePage HomePage;
+	SimBasePage RoleMaintenancePage;
+	SimBasePage ItemBasketPage;
+
+	@BeforeClass
+	public void setup(ITestContext context) throws Exception {
+		logger.info("TestCase Name: " +logger.getName());
+		SIMWebdriverBase.loadInitialURL(context);
+		LoginPage=pagefactory.initialize("LoginPage");
+		HomePage=pagefactory.initialize("HomePage");
+		RoleMaintenancePage=pagefactory.initialize("RoleMaintenancePage");
+		ItemBasketPage=pagefactory.initialize("ItemBasketPage");
+		LoginPage.explicitWaitForVisibility("Username");
+		LoginPage.enterIntoTextBox("Username",LoginPage.getProperty("Username"));
+		LoginPage.enterIntoTextBox("Password",LoginPage.getProperty("Password"));
+		LoginPage.click("SignIn");		
+		HomePage.verifyTextValue("Title", "Store Inventory Operations Cloud Service");
+		HomePage.verifyTextValue("UserMenu", HomePage.getProperty("Username"));
+		HomePage.storeIdCheck();
+		HomePage.explicitWaitForElementToBeClickable("Navigation");
+		HomePage.click("Navigation");
+
+	}
+
+	@DataProvider(name = "RoleMaintenanceTestData")
+	public Object[][] getRoleMaintenanceTestData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("SecurityTestData"),
+				"RoleMaintenance");
+		return testObjArray;
+	}
+
+	@Test(dataProvider="RoleMaintenanceTestData", priority=1)
+	public void verifyRole(Map<String,String> map) throws Exception {
+		//Navigating to role maintenance page		
+		logger.info("Method Name: verifyRole");
+		HomePage.explicitWaitForElementToBeClickable("Security");
+		HomePage.click("Security");
+		HomePage.click("RoleMaintenance");	
+
+		//Verifying RoleMaintenance Page Title
+		RoleMaintenancePage.explicitWaitForElementToBeClickable("Title");
+		RoleMaintenancePage.verifyTextValue("Title",map.get("Title"));
+
+		//Granting the user permission
+		String userRole=propReader.getApplicationproperty("UserRole");
+		RoleMaintenancePage.verifyUserRole(userRole, map.get("AccessItemBasket"), map.get("AssignedDataNo"));
+	}
+
+	@DataProvider(name = "SearchCriteriaDepartmentTestData")
+	public Object[][] getSearchCriteriaDepartmentTestData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("ItemBasketTestData"),
+				"SearchCriteriaDepartment");
+		return testObjArray;
+	}	
+
+	@Test(dataProvider="SearchCriteriaDepartmentTestData", priority=2,dependsOnMethods= { "verifyRole" })
+	public void verifyDepartmentHierarchy(Map<String,String> map) throws Exception {
+		//Navigating to ItemBasket List screen
+		logger.info("Method Name: verifyDepartmentHierarchy");
+		HomePage.explicitWaitForElementToBeClickable("InventoryManagement");
+		HomePage.click("InventoryManagement");
+		HomePage.click("ItemBasketPage");
+
+		//Verifying the page title
+		ItemBasketPage.explicitWaitForElementToBeClickable("ItemBasketListTitle");
+		ItemBasketPage.verifyTextValue("ItemBasketListTitle",map.get("ItemBasketListTitle"));
+
+		//clicking on search icon to display search criteria dialog
+		ItemBasketPage.explicitWaitForElementToBeClickable("SearchIcon");
+		ItemBasketPage.click("SearchIcon");
+
+		//Verifying the search criteria dialog title
+		ItemBasketPage.explicitWaitForVisibility("SearchCriteriaTitle");
+		ItemBasketPage.verifyTextValue("SearchCriteriaTitle",map.get("SearchCriteriaTitle"));
+
+		//Verifying the department drop down label
+		ItemBasketPage.verifyTextValue("DepartmentLable",map.get("DepartmentLabel"));
+
+		//Verifying Department menu should be drop down
+		String tagName=ItemBasketPage.getAttributeValue("DepartmentDropDown",map.get("TagNameAttribute"));
+		ItemBasketPage.verifyValuesAreEqual(map.get("TagName"),tagName);
+		ItemBasketPage.implicitWait();
+
+		if(tagName.equals(map.get("TagName"))){
+			//Verifying the drop down menu values format 'Department ID-> Department Description'
+			ItemBasketPage.explicitWaitForElementToBeClickable("DepartmentDropDown");
+			ItemBasketPage.click("DepartmentDropDown");
+			ItemBasketPage.explicitWaitForElementToBeClickable("DepartmentDropDownList");
+			ItemBasketPage.verifyTextValue("DepartmentDropDownList",map.get("SelectValue"));			
+			ItemBasketPage.verifyDepartmentDropDownPattern("DepartmentDropDownList");
+
+			//Verifying the Default value of Department
+			ItemBasketPage.verifyValuesAreEqual(map.get("DepartmentDefaultValue"),ItemBasketPage.getAttributeValue("DepartmentDropDown",map.get("PlaceHolderAttribute")));
+
+			//Verify Order of Department ID in drop down list should be in Numeric Ascending order
+			ItemBasketPage.verifyDepartmentSortingOrder("DepartmentDropDownList");
+
+			//Verify the filtering Department
+			ItemBasketPage.enterIntoTextBox("DropDownFilter",map.get("Department"));
+			ItemBasketPage.explicitWaitForVisibility("DropDownHighLightRecord");
+			ItemBasketPage.verifyTextValue("DropDownHighLightRecord",map.get("Department"));
+
+			//Select a department value from drop down and click on search
+			ItemBasketPage.click("DropDownHighLightRecord");
+			ItemBasketPage.explicitWaitForElementToBeClickable("SearchButton");
+			ItemBasketPage.click("SearchButton");
+
+			//Verifying table rows are displayed or not
+			ItemBasketPage.explicitWaitForVisibility("ItemBasketListTitle");
+			ItemBasketPage.verifyTableRecordsCount("TableRows","UserColumnName","FilterItemBasketId");
+
+			//clicking on search icon to display search criteria dialog
+			ItemBasketPage.explicitWaitForElementToBeClickable("SearchIcon");
+			ItemBasketPage.click("SearchIcon");
+
+			//Select 'select' option from department drop down 
+			ItemBasketPage.explicitWaitForVisibility("SearchCriteriaTitle");
+			Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+			ItemBasketPage.explicitWaitForElementToBeClickable("DepartmentDropDown");
+			ItemBasketPage.selectDropDownValue("DepartmentDropDown",map.get("DepartmentDefaultValue"));
+
+			//Verify the cancel drop down is disabled or not
+			ItemBasketPage.explicitWaitForElementToBeClickable("SearchCriteriaClassDropDown");
+			ItemBasketPage.verifyElementIsDisabled("SearchCriteriaClassDropDown");
+
+			//Select department option from department drop down 
+			ItemBasketPage.explicitWaitForElementToBeClickable("DepartmentDropDown");
+			ItemBasketPage.selectDropDownValue("DepartmentDropDown",map.get("Department"));
+
+			//Verify the cancel drop down is disabled or not
+			ItemBasketPage.explicitWaitForElementToBeClickable("SearchCriteriaClassDropDown");
+			ItemBasketPage.verifyElementIsEnabled("SearchCriteriaClassDropDown");
+
+			ItemBasketPage.explicitWaitForElementToBeClickable("SearchCriteriaCancelButton");
+			ItemBasketPage.click("SearchCriteriaCancelButton");
+		}
+	}	
+
+	@AfterClass
+	public void tearDown() {
+		try {
+			logger.info("After Test: Logging out");
+			HomePage.click("UserMenu");
+			HomePage.explicitWaitForVisibility("Logout");
+			HomePage.click("Logout");
+			HomePage.explicitWaitForVisibility("Yes");
+			HomePage.click("Yes");
+		}
+		finally {
+			SIMWebdriverBase.close();
+		}
+	}
+}

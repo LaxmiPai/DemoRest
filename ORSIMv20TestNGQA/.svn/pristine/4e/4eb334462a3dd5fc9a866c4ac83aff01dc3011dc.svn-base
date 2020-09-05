@@ -1,0 +1,397 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ORSIM SMOKE Tests">
+	<listeners>
+		<listener
+			class-name="com.oracle.core.reports.ExtentReporterNG" />
+		<listener
+			class-name="com.oracle.core.reports.TestNGCustomReportListener" />
+		<listener
+			class-name="com.oracle.core.reports.TestScreenshotListener" />
+	</listeners>
+
+	<test name="Subbuckets">
+		<classes>
+			<class name="com.oracle.sim.testcases.Subbuckets.SubBuckets" />
+		</classes>
+	</test>
+	<test name="ShipmentReasons">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ShipmentReason.ShipmentReasons" />
+		</classes>
+	</test>
+	<test name="InventoryAdjustmentReasonsCodeAddEditDelete">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustmentReasons.InventoryAdjustmentReasonsCodeAddEditDelete" />
+		</classes>
+	</test>
+
+	<test
+		name="AssignPermissionInventoryAdjustmentReasons">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustmentReasons.AssignPermissionInventoryAdjustmentReasons" />
+		</classes>
+	</test>
+
+	<test name="SecurityPermissionShipmentReasons">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ShipmentReason.SecurityPermissionShipmentReasons" />
+		</classes>
+	</test>
+	<test name="PrinterSetup.Add/Edit/Search/Delete Printer">
+		<classes>
+			<class name="com.oracle.sim.testcases.PrinterSetup.Printer" />
+		</classes>
+	</test>
+	<test name="PackageSizeSetup.Add/Edit/Search/Delete PackageSize">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.PackageSizeSetup" />
+		</classes>
+	</test>
+	<test name="SupplierLookupId">
+		<classes>
+			<class name="com.oracle.sim.testcases.SupplierLookup.SupplierLookupId" />
+		</classes>
+	</test>
+
+	<test name="SupplierLookupName"> 
+	    <classes>
+	        <class name="com.oracle.sim.testcases.SupplierLookup.SupplierLookupName" /> 
+	    </classes> 
+	</test> 
+	
+	<test name="CustomFlexibleAttribute-Apply">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.CustomFlexibleAttribute.ApplyCustomFlexibleAttribute" />
+		</classes>
+	</test>
+
+
+	<test name="FinisherLookup-FilterCriteria.IncludeInactiveSwitch">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaIncludeInactiveSwitchOption" />
+		</classes>
+	</test>
+
+
+	<test
+		name="FinisherLookup-FilterCriteria.ValidateVerifyRecordFound">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaValidateVerifyRecordFound" />
+		</classes>
+	</test>
+
+
+	<test name="FinisherLookup-FinishersVerifyDetailScreen">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.SearchIncludeInactiveFinishersVerifyDetailScreenTestcase" />
+		</classes>
+	</test>
+
+	<test name="FinisherLookup-FilterCriteria.ValidateFinisherId">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaValidateFinisherID" />
+		</classes>
+	</test>
+
+	<test name="FinisherLookup-FilterCriteria.ValidateItemId">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaValidateItemID" />
+		</classes>
+	</test>
+
+	<test name="FinisherLookup-FilterCriteria.ValidateName">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.FinisherLookup.FilterCriteriaValidateName" />
+		</classes>
+	</test>
+
+	
+	<test name="Translation set up - Edit">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TranslationSetUp.TranslationSetUpEdit" />
+		</classes>
+	</test>
+
+	<test name="Translation set up - Filter search">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TranslationSetUp.TranslationSetUpFiterSearch" />
+		</classes>
+	</test>
+
+	<test name="Translation set up - Search">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TranslationSetUp.TranslationSetUpAccessSearch" />
+		</classes>
+	</test>
+
+	<test name="Translation set up - Languages supported">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TranslationSetUp.TranslationSetUpAccessTranLanguages" />
+		</classes>
+	</test>
+
+	<test name="Translation set up - Access Translations permission">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TranslationSetUp.TranslationSetUpAccessTranPermission" />
+		</classes>
+	</test>
+	
+	
+	<test name="BuddyStoreGridBar">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.BuddyStoreGridBar" />
+		</classes>
+	</test>
+	
+	<test name="ItemBasketUIAndNavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketUIAndNavigation" />
+		</classes>
+	</test>
+	
+	<test name="UserAssignmentUIAndNavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Security.UserAssignmentUIAndNavigation" />
+		</classes>
+	</test>
+
+
+	<test name="CustomFlexibleAttribute.Add/Save/Filter/Remove">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.CustomFlexibleAttribute.CustomFlexibleAttribute" />
+		</classes>
+	</test>
+	<test name="SupplierLookupAddressExpansion">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.SupplierLookup.SupplierLookupAddressExpansion" />
+		</classes>
+	</test>
+	<test name="SupplierLookupHeaderFields">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.SupplierLookup.SupplierLookupHeaderFields" />
+		</classes>
+	</test>
+	<test name="MPSWorkTypeTableListField">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSWorkType.MpsWorkTypeTableListField" />
+		</classes>
+	</test>
+
+	<test name="MPSWorkTypeTitleBar">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSWorkType.MpsWorkTypeTitleBar" />
+		</classes>
+	</test>
+	<test name="CarrierAddAndDelete">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.CarrierAddAndDelete" />
+		</classes>
+	</test>
+	<test name="TransactionHistoryListNavigationUi">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TransactionHistory.TransactionHistoryListNavigationUi" />
+		</classes>
+	</test>
+	<test name="TransactionHistorySearchCriteriaNavigationUi">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TransactionHistory.TransactionHistorySearchCriteriaNavigationUi" />
+		</classes>
+	</test>
+	<test name="BatchSchedulerUi">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobScheduler.BatchSchedulerUi" />
+		</classes>
+	</test>
+	<test name="UinLookupSearchField">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.UinLookup.UinLookupSearchField" />
+		</classes>
+	</test>
+	<test name="ViewDetailUi">
+		<classes>
+			<class name="com.oracle.sim.testcases.JobAdmin.ViewDetailUi" />
+		</classes>
+	</test>
+	<test name="JobAdminAdhocJob">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobAdmin.JobAdminAdhocJob" />
+		</classes>
+	</test>
+
+	<test name="ViewDetailsFieldExecutionId">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobAdmin.ViewDetailsFieldExecutionId" />
+		</classes>
+	</test>
+
+	<test name="ViewDetailsFieldMessageDetail">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobAdmin.ViewDetailsFieldMessageDetail" />
+		</classes>
+	</test>
+	
+	<test name="TroubledTransactionDetailFieldValidation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TroubledTransaction.TroubledTransactionDetailFieldValidation" />
+		</classes>
+	</test>
+	
+	<test name="BarCodeProcessorUINavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.BarCodeProcessorUINavigation" />
+		</classes>
+	</test>
+	
+	<test name="MpsStagedMessageMultipleFilterCriteria">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSStagedMessage.MpsStagedMessageMultipleFilterCriteria" />
+		</classes>
+	</test>
+
+	<test name="MpsStagedMessageFilterFamily">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSStagedMessage.MpsStagedMessageFilterFamily" />
+		</classes>
+	</test>
+	<test name="CodeInfoGridBar">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.CodeInfo.CodeInfoGridBar" />
+		</classes>
+	</test>
+	<test name="ItemBasketSearchCriteriahHierarchyDepartment">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketSearchCriteriahHierarchyDepartment" />
+		</classes>
+	</test>
+	<test name="ItemBasketSearchCriteriaItem">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketSearchCriteriaItem" />
+		</classes>
+	</test>
+	
+	
+
+	<test name="TicketListUIandNavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketListUIandNavigation" />
+		</classes>
+	</test>
+	
+	<test name="AreaUIAndNavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Operations.AreaUIAndNavigation" />
+		</classes>
+	</test>
+	<test name="TicketDetailUiAndNavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailUiAndNavigation" />
+		</classes>
+	</test>
+	<test name="PrinterNavigationAndUi">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.PrinterSetup.PrinterNavigationAndUi" />
+		</classes>
+	</test>
+	<test name="TicketFilterUI">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ticketFilter.TicketFilterUI" />
+		</classes>
+	</test>
+	<test name="containerLookupSearch">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.containerLookup.containerLookupSearch" />
+		</classes>
+	</test>
+		<test name="StoreAdminDefaultUIAndNavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.AdminScreens.StoreAdminDefaultUIAndNavigation" />
+		</classes>
+	</test>
+	
+	<test name="StoreAdminUIAndNavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.AdminScreens.StoreAdminUIAndNavigation" />
+		</classes>
+	</test>
+	
+	<test name="SystemAdminUIAndNavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.AdminScreens.SystemAdminUIAndNavigation" />
+		</classes>
+	</test>
+	
+	<test name="TicketFormatUIAndNavigation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketFormatUIAndNavigation" />
+		</classes>
+	</test>
+	<test name="TicketDetailItemQuantity">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailItemQuantity" />
+		</classes>
+	</test>
+	<test name="TicketDetailOverridePrice">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailOverridePrice" />
+		</classes>
+	</test>
+	<test name="TicketDetailPrintQuantityField">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailPrintQuantityField" />
+		</classes>
+	</test>
+	
+</suite>

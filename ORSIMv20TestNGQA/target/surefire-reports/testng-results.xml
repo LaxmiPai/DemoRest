@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="ORSIM GWT UI Tests" duration-ms="103385" started-at="2019-12-06T10:06:33Z" finished-at="2019-12-06T10:08:17Z">
+    <groups>
+    </groups>
+    <test name="PrinterSetup.Add/Edit/Delete Printer" duration-ms="103385" started-at="2019-12-06T10:06:33Z" finished-at="2019-12-06T10:08:17Z">
+      <class name="com.oracle.sim.testcases.PrinterSetup.Printer">
+        <test-method status="PASS" signature="setup(org.testng.ITestContext)[pri:0, instance:com.oracle.sim.testcases.PrinterSetup.Printer@212dfd39]" name="setup" is-config="true" duration-ms="42867" started-at="2019-12-06T10:06:33Z" finished-at="2019-12-06T10:07:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@586486c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="printerAdd(java.util.Map)[pri:1, instance:com.oracle.sim.testcases.PrinterSetup.Printer@212dfd39]" name="printerAdd" duration-ms="21399" started-at="2019-12-06T10:07:18Z" data-provider="AddPrinterTestData" finished-at="2019-12-06T10:07:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- printerAdd -->
+        <test-method status="PASS" signature="printerSearch(java.util.Map)[pri:2, instance:com.oracle.sim.testcases.PrinterSetup.Printer@212dfd39]" name="printerSearch" duration-ms="2347" started-at="2019-12-06T10:07:39Z" data-provider="SearchPrinterTestData" finished-at="2019-12-06T10:07:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Description=Creating during Automation Run, Address=Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=No, Name=NewPrinterName, ManifestDefault=Yes}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- printerSearch -->
+        <test-method status="PASS" signature="printerEdit(java.util.Map)[pri:3, instance:com.oracle.sim.testcases.PrinterSetup.Printer@212dfd39]" name="printerEdit" duration-ms="13333" started-at="2019-12-06T10:07:41Z" data-provider="EditPrinterData" finished-at="2019-12-06T10:07:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName, ManifestDefault=No}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- printerEdit -->
+        <test-method status="PASS" signature="printerDelete(java.util.Map)[pri:4, instance:com.oracle.sim.testcases.PrinterSetup.Printer@212dfd39]" name="printerDelete" duration-ms="18730" started-at="2019-12-06T10:07:55Z" data-provider="EditPrinterData" finished-at="2019-12-06T10:08:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Description=Edited during Automation Run, Address=Edit- Testing/Automation, TestCase=AddPrinter, PreShipmentDefault=Yes, NewName=EditedPrinterName, OriginalName=NewPrinterName, ManifestDefault=No}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- printerDelete -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.oracle.sim.testcases.PrinterSetup.Printer@212dfd39]" name="tearDown" is-config="true" duration-ms="2998" started-at="2019-12-06T10:08:14Z" finished-at="2019-12-06T10:08:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.oracle.sim.testcases.PrinterSetup.Printer -->
+    </test> <!-- PrinterSetup.Add/Edit/Delete Printer -->
+  </suite> <!-- ORSIM GWT UI Tests -->
+</testng-results>

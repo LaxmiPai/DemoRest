@@ -1,0 +1,21 @@
+package com.oracle.sim.pages.DataSetup;
+
+import org.openqa.selenium.By;
+import com.oracle.sim.pages.Base.SimBasePage;
+
+public class IsnPage extends SimBasePage {
+	public IsnPage() throws Exception {
+		super();
+		
+		//ISN Types screen
+		addObject("ISNTypeAddButton",By.xpath("//oj-button[@id='add-button']"));
+		addObject("ISNTypeDeleteButton",By.xpath("//oj-button[@id='delete-button']"));
+		addObject("ISNTypeRefrshButton",By.xpath("//oj-button[@id='refresh-button']"));
+		addObject("ISNTypeSaveButton",By.xpath("//oj-button[@id='save-button']"));
+		addObject("ISNTypeLalFilterInput",By.xpath("//input[contains(@id,'-column-filter-label')]"));
+		addObject("ISNTypeTitle",By.xpath("//h3[@id='sim-screen-title']"));
+		addObject("ISNTypeDetlLblInput",By.xpath("//textarea[@id='input-label|input']"));
+		addObject("ISNTpesDtlApplyButon",By.xpath("//oj-button[@id='detail-apply-button']"));
+		addObject("ISNTypeFrstRow",By.xpath("//tr[contains(@id,'-group-all')][1]"));
+		}
+}

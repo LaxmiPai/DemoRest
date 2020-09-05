@@ -1,0 +1,518 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ORSIM SANITY Tests">
+	<listeners>
+		<listener
+			class-name="com.oracle.core.reports.ExtentReporterNG" />
+		<listener
+			class-name="com.oracle.core.reports.TestNGCustomReportListener" />
+		<listener
+			class-name="com.oracle.core.reports.TestScreenshotListener" />
+	</listeners>
+
+	<test name="RemoveInventoryAdjustmentReasons-System Required Yes">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustmentReasons.RemoveInventoryAdjustmentReasons" />
+		</classes>
+	</test>
+	<test name="RefreshInventoryAdjustmentReasons">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustmentReasons.RefreshInventoryAdjustmentReasons" />
+		</classes>
+	</test>
+	<test name="Configuration-CarrierServicesAddAndDelete">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.CarrierServicesAddAndDelete" />
+		</classes>
+	</test>
+
+	<test name="Configuration-CarrierServiceRemoveSystemasYes">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.CarrierServiceRemoveSystemasYes" />
+		</classes>
+	</test>
+
+	<test name="InventoryAdjustment-AddNonUINInventory">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.AddNonUINInventory" />
+		</classes>
+	</test>
+	<test name="InventoryAdjustment-AddUINInventory">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.AddUINInventory" />
+		</classes>
+	</test>
+	<test name="InventoryAdjustment-Confirm Invenotry Adjustment">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.ConfirmInventoryAdjusmtent" />
+		</classes>
+	</test>
+	<test name="InventoryAdjustment-Delete Invenotry Adjustment">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.DeleteInventoryAdjustment" />
+		</classes>
+	</test>
+	
+	<test
+		name="InventoryAdjustment-Notes Fields:Create/In-Progress/Compeleted/Canceled">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.NotesFieldInventoryAdjustmentVerify" />
+		</classes>
+	</test>
+
+	<test
+		name="InventoryAdjustment-Security Permission Invenotry Adjustment">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.SecurityPermissionInventoryAdjustment" />
+		</classes>
+	</test>
+	
+	<test name="ShipmentReasons-DetailBlockSubbucketShipmentReasons">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ShipmentReason.DetailBlockSubbucketShipmentReasons" />
+		</classes>
+	</test>
+	<test name="PackageSize -Validations">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.PackageSizeValidations" />
+		</classes>
+	</test>
+	<test name="Permission Location Types- Shipment Reasons">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ShipmentReason.PermissionLocationTypeShipmentReason" />
+		</classes>
+	</test>
+
+	<test name="SaveItemBasket">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.SaveItemBasket" />
+		</classes>
+	</test>
+
+	<test name="DeleteItemBasket">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.DeleteItemBasket" />
+		</classes>
+	</test>
+
+	<test name="ConfirmItemBasket">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ConfirmItemBasket" />
+		</classes>
+	</test>
+
+
+
+	<test name="ItemDetailPackType">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemLookup.ItemDetailPackType" />
+		</classes>
+	</test>
+
+	<test name="UinLookupStoreSearchField">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.UinLookup.UinLookupStoreSearchField" />
+		</classes>
+	</test>
+
+	<test name="AdhocJobButtonCancel">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobAdmin.AdhocJobButtonCancel" />
+		</classes>
+	</test>
+
+	<test name="AdhocJobButtonStartJob">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobAdmin.AdhocJobButtonStartJob" />
+		</classes>
+	</test>
+
+
+	<test name="MPSWorkTypeApplyBlockApply">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSWorkType.MpsWorkTypeDetailApplyBlockApply" />
+		</classes>
+	</test>
+
+	<test name="MPSWorkTypeDetailApplyBlockCancel">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSWorkType.MpsWorkTypeDetailApplyBlockCancel" />
+		</classes>
+	</test>
+
+	<test name="MPSWorkTypeApplyDetailBlockEdit">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSWorkType.MpsWorkTypeDetailApplyBlockEdit" />
+		</classes>
+	</test>
+
+	<test name="TransactionHistoryListRecordValidation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TransactionHistory.TransactionHistoryListRecordValidation" />
+		</classes>
+	</test>
+	<test name="TransactionHistoryListNavigationToActualTransaction">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TransactionHistory.TransactionHistoryListNavigationToActualTransaction" />
+		</classes>
+	</test>
+	<test name="TransactionHistorySearchUsingFromAndToDates">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TransactionHistory.TransactionHistorySearchUsingFromAndToDates" />
+		</classes>
+	</test>
+	<test name="BatchSchedulerApply">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobScheduler.BatchSchedulerApply" />
+		</classes>
+	</test>
+	<test name="BatchSchedulerJobExecutionTime">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.JobScheduler.BatchSchedulerJobExecutionTime" />
+		</classes>
+	</test>
+	<test name="UinLookupViewHistoryLink">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.UinLookup.UinLookupViewHistoryLink" />
+		</classes>
+	</test>
+	<test name="UinLookupNoDateError">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.UinLookup.UinLookupNoDateError" />
+		</classes>
+	</test>
+	<test name="CodeInfoPermission">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.CodeInfo.CodeInfoPermission" />
+		</classes>
+	</test>
+
+	<test name="BarCodeProcessorDetail">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.BarCodeProcessorDetail" />
+		</classes>
+	</test>
+
+	<test name="BarCodeProcessorSricptValidation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.BarCodeProcessorSricptValidation" />
+		</classes>
+	</test>
+
+	<test name="CodeInfoUnique">
+		<classes>
+			<class name="com.oracle.sim.testcases.CodeInfo.CodeInfoUnique" />
+		</classes>
+	</test>
+
+	<test name="TroubledTransactionViewHistoryErrorMessage">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TroubledTransaction.TroubledTransactionViewHistoryErrorMessage" />
+		</classes>
+	</test>
+
+	<test name="TroubledTransactionResolveResetStatusChange">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.TroubledTransaction.TroubledTransactionResolveResetStatusChange" />
+		</classes>
+	</test>
+
+
+	<test name="AddRemoveBuddyStore">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Configuration.AddRemoveBuddyStore" />
+		</classes>
+	</test>
+
+	<test name="PrinterPreshipmentDefault">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.PrinterSetup.PrinterPreshipmentDefault" />
+		</classes>
+	</test>
+
+	<test name="PrinterFilterSearch">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.PrinterSetup.PrinterFilterSearch" />
+		</classes>
+	</test>
+
+	<test name="MpsStagedMessageDelete">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSStagedMessage.MpsStagedMessageDelete" />
+		</classes>
+	</test>
+
+	<test name="MpsStagedMessageRetry">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.MPSStagedMessage.MpsStagedMessageRetry" />
+		</classes>
+	</test>
+
+	<test name="SupplierLookupFilterAndSort">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.SupplierLookup.SupplierLookupFilterAndSort" />
+		</classes>
+	</test>
+	<test name="CodeInfoEditAndRemove">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.CodeInfo.CodeInfoEditAndRemove" />
+		</classes>
+	</test>
+	<test name="UserAssignmentUpdate">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Security.UserAssignmentUpdate" />
+		</classes>
+	</test>
+	<test name="CodeInfoApply">
+		<classes>
+			<class name="com.oracle.sim.testcases.CodeInfo.CodeInfoApply" />
+		</classes>
+	</test>
+	<test name="ItemBasketCopy">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketCopy" />
+		</classes>
+	</test>
+	<test name="ItemBasketCreateInUserStore">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketCreateInUserStore" />
+		</classes>
+	</test>
+
+	<test name="ItemBasketDetailApplyButtonVerify">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketDetailApplyButtonVerify" />
+		</classes>
+	</test>
+	<test name="ItemBasketDetailEditButtonVerify">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketDetailEditButtonVerify" />
+		</classes>
+	</test>
+	<test name="ItemBasketDetailNoComponentsConfirmVerify">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketDetailNoComponentsConfirmVerify" />
+		</classes>
+	</test>
+	
+	<test name="ItemBasketEditInUserStore">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketEditInUserStore" />
+		</classes>
+	</test>
+	
+	<test name="TicketListDeleteErrorMessageVerification">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketListDeleteErrorMessageVerification" />
+		</classes>
+	</test>
+	
+	<test name="TicketListGridFieldsVerification">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketListGridFieldsVerification" />
+		</classes>
+	</test>
+	
+	<test name="TicketListPrintButtonPermission">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketListPrintButtonPermission" />
+		</classes>
+	</test>
+	
+	
+	<test name="TicketListSecutiryPermission">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketListSecutiryPermission" />
+		</classes>
+	</test>
+	
+	<test name="TicketListCreateButtonPermissionVerification">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketListCreateButtonPermissionVerification" />
+		</classes>
+	</test>
+	<test name="TicketListDeleteButtonPermissionVerification">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketListDeleteButtonPermissionVerification" />
+		</classes>
+	</test>
+	
+	<test name="ItemBasketCreateInAllStores">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ItemBasket.ItemBasketCreateInAllStores" />
+		</classes>
+	</test>
+	
+	<test name="AddCodeInfo">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.CodeInfo.AddCodeInfo" />
+		</classes>
+	</test>
+	<test name="TicketDetailCreateSecurityPermission">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailCreateSecurityPermission" />
+		</classes>
+	</test>
+	<test name="TicketDetailSaveAndDelete">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailSaveAndDelete" />
+		</classes>
+	</test>
+	<test name="TicketFilterDateAndUserSearch">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ticketFilter.TicketFilterDateAndUserSearch" />
+		</classes>
+	</test>
+	<test name="TicketFilterItemFieldValidation">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.ticketFilter.TicketFilterItemFieldValidation" />
+		</classes>
+	</test>
+	<test name="TicketDetailDeleteSecurityPermission">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailDeleteSecurityPermission" />
+		</classes>
+	</test>
+	<test name="TicketDetailEditTicketPermission">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailEditTicketPermission" />
+		</classes>
+	</test>
+	<test name="TicketDetailItemField">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailItemField" />
+		</classes>
+	</test>
+	<test name="TicketDetailPrintTicketPermission">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketDetailPrintTicketPermission" />
+		</classes>
+	</test>
+	<test name="UinStatusInstockToRemoveFrmInventory">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.UinStatusInstockToRemoveFrmInventory" />
+		</classes>
+	</test>
+	
+	<test name="InvtAdjustmntDispPlusStockOnHand">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.InvtAdjustmntDispPlusStockOnHand" />
+		</classes>
+	</test>
+	
+	<test name="InventoryAdjmntUinUnavailableToInStock">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.InventoryAdjmntUinUnavailableToInStock" />
+		</classes>
+	</test>
+	
+	<test name="VariousStatuesToInStock">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.VariousStatuesToInStock" />
+		</classes>
+	</test>
+	
+	<test name="InvAdjSohUnavailableDB">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.InventoryAdjustment.InvAdjSohUnavailableDB" />
+		</classes>
+	</test>
+	
+	<test name="StoreAdminDefaultPermissionEdit">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.AdminScreens.StoreAdminDefaultPermissionEdit" />
+		</classes>
+	</test>
+	
+	<test name="StoreAdminPermissionEdit">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.AdminScreens.StoreAdminPermissionEdit" />
+		</classes>
+	</test>
+	
+	<test name="SystemAdminPermissionEdit">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.AdminScreens.SystemAdminPermissionEdit" />
+		</classes>
+	</test>
+	
+	<test name="TicketPrintFormatEditButton">
+		<classes>
+			<class
+				name="com.oracle.sim.testcases.Ticket.TicketPrintFormatEditButton" />
+		</classes>
+	</test>
+	
+</suite>

@@ -1,0 +1,234 @@
+//Author : shhg
+
+package com.oracle.sim.testcases.ticketFilter;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Map;
+import java.util.logging.Logger;
+
+import org.testng.ITestContext;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.oracle.core.dataProvider.ExcelReader;
+import com.oracle.core.utils.PropertyReader;
+import com.oracle.sim.pageFactory.PageFactory;
+import com.oracle.sim.pages.Base.SimBasePage;
+import com.oracle.sim.utils.SIMWebdriverBase;
+
+public class TicketFilterDateAndUserSearch {
+	public static Logger logger=Logger.getLogger(TicketFilterDateAndUserSearch.class.getName());
+	public static PropertyReader propReader = new PropertyReader();
+	PageFactory pageFactory = new PageFactory();
+	
+	SimBasePage LoginPage;
+	SimBasePage HomePage;
+	SimBasePage RoleMaintenancePage;
+	SimBasePage ticketFilterPage;
+	String storeID;
+			
+	@BeforeClass()
+	public void setup(ITestContext context) throws Exception{
+		logger.info("TestCase Name: "+logger.getName());
+		SIMWebdriverBase.loadInitialURL(context);
+		LoginPage=pageFactory.initialize("LoginPage");
+		HomePage=pageFactory.initialize("HomePage");
+		RoleMaintenancePage=pageFactory.initialize("RoleMaintenancePage");
+		ticketFilterPage=pageFactory.initialize("ticketFilterPage");
+		ticketFilterPage.getConnection();
+		LoginPage.explicitWaitForVisibility("Username");
+		LoginPage.enterIntoTextBox("Username", LoginPage.getProperty("Username"));
+		LoginPage.enterIntoTextBox("Password", LoginPage.getProperty("Password"));
+		LoginPage.click("SignIn");
+		HomePage.verifyTextValue("Title", HomePage.getProperty("Title"));
+		HomePage.verifyTextValue("UserMenu", HomePage.getProperty("Username"));
+		HomePage.storeIdCheck();
+		HomePage.explicitWaitForElementToBeClickable("Navigation");
+		HomePage.click("Navigation");
+		storeID = HomePage.getProperty("StoreId");
+		
+	} 
+	
+	@DataProvider (name="ticketFilterAccessTestData")
+	public Object[][] getticketFilterAccessTestData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("ticketFilterTestData"), "Permission");
+		return testObjArray;
+	}
+	
+	@Test(dataProvider="ticketFilterAccessTestData", priority=1)
+	public void verifyRole(Map<String,String> map) throws Exception{
+	//Navigating to role maintenance page
+	logger.info("Method Name: verifyRole");
+	HomePage.click("Security");
+	HomePage.click("RoleMaintenance");
+		
+	//Verifying RoleMaintenance Page Title
+ 	RoleMaintenancePage.explicitWaitForElementToBeClickable("Title");
+	RoleMaintenancePage.verifyTextValue("Title",map.get("Title"));
+		
+	//Verifying a user permission
+	String roleName=propReader.getApplicationproperty("UserRole");
+	logger.info(roleName);
+	RoleMaintenancePage.verifyUserRole(roleName, map.get("AccessTicketFilter"), map.get("AssignedDataNo"));
+	
+	}	
+	
+	@DataProvider (name="ticketFilterUserData")
+	public Object[][] getticketFilterUserData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("ticketFilterTestData"), "User");
+		return testObjArray;
+	}	
+	@Test(dataProvider = "ticketFilterUserData", priority=3)
+			public void verifyTicketFilterUserSearch(Map<String, String> map) throws Exception {
+			
+			logger.info("Method Name: verifyTicketFilterUserSearch");
+			ticketFilterPage.explicitWaitForElementToBeClickable("InventoryMgmt");
+			ticketFilterPage.click("InventoryMgmt");
+			ticketFilterPage.explicitWaitForElementToBeClickable("TicketMenu");
+			ticketFilterPage.click("TicketMenu");
+//			ticketFilterPage.explicitWaitForElementToBeClickable("SummarySearch");
+//			ticketFilterPage.click("SummarySearch");
+			
+			//Inside search and clearing all date values if any
+			ticketFilterPage.verifyTextValue("SearchHeading", map.get("SearchHeader"));
+			ticketFilterPage.clearElement("FromPrintDValue");
+			ticketFilterPage.clearElement("ToPrintDValue");
+			ticketFilterPage.clearElement("FromActiveDValue");
+			ticketFilterPage.clearElement("ToActiveDValue");
+			ticketFilterPage.clearElement("FromEndDValue");
+			ticketFilterPage.clearElement("ToEndDValue");
+			ticketFilterPage.click("UserInput");
+			ticketFilterPage.enterIntoTextBox("UserInput", map.get("UpdatedUserName"));
+			ticketFilterPage.click("SearchButton");
+			Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+			ticketFilterPage.resultCountVerification("select COUNT(*) from ticket where update_user='sim_qa3' and store_id='"+storeID+"'","TotalResult");
+	}	
+		
+
+	@DataProvider (name="ticketFilterToActiveDateData")
+	public Object[][] getticketFilterToActiveDateData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("ticketFilterTestData"), "Date");
+		return testObjArray;
+	}	
+	@Test(dataProvider = "ticketFilterToActiveDateData", priority=4)
+			public void verifyTicketFilterToActiveDateField(Map<String, String> map) throws Exception {
+			
+		    logger.info("Method Name: verifyTicketFilterToActiveDateField");
+		    ticketFilterPage.explicitWaitForElementToBeClickable("SummarySearch");
+			ticketFilterPage.click("SummarySearch");
+			ticketFilterPage.verifyTextValue("SearchHeading", map.get("SearchHeader"));
+			ticketFilterPage.isFieldEmpty("FromActiveDValue");
+			ticketFilterPage.isFieldEmpty("ToActiveDValue");
+			ticketFilterPage.clearElement("FromPrintDValue");
+			ticketFilterPage.clearElement("ToPrintDValue");
+			ticketFilterPage.clearElement("FromEndDValue");
+			ticketFilterPage.clearElement("ToEndDValue");
+			Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Lowest")));
+			
+			//To get current date
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");  
+			Date date = new Date();
+			String currDate = dateFormat.format(date);
+			ticketFilterPage.selectDateFromDatePicker("ToActiveDValue",currDate);
+			ticketFilterPage.click("UserInput");
+			ticketFilterPage.enterIntoTextBox("UserInput", map.get("UpdatedUserName"));
+			ticketFilterPage.click("SearchButton");
+			Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+			
+			//Modifying the date format to dd-MMM-YY as database needs input in the stated format
+			DateFormat dateFormat1 = new SimpleDateFormat("dd-MMM-yy");  
+			String ToDate1 = dateFormat1.format(date);
+			String query = "select COUNT(*) from ticket where store_id ="+storeID+" and update_user = 'sim_qa3' and EXISTS (SELECT 1 FROM ( select ITEM_ID, STORE_ID, PRICE_TYPE, EFFECTIVE_DATE, END_DATE, CLEARANCE_RESET, STATUS, RANK() OVER (PARTITION BY item_price_v.ITEM_ID, item_price_v.STORE_ID ORDER BY  item_price_v.EFFECTIVE_DATE DESC,item_price_v.PRICE_TYPE ASC,item_price_v.UPDATE_DATE DESC ) rank_num  from item_price_v ) price where trunc(price.EFFECTIVE_DATE) <= TO_DATE('"+ToDate1+"','dd-MON-yy') AND  price.store_id = 1311 AND price.CLEARANCE_RESET <> 'Y' AND price.status in (2, 3, 5) AND price.RANK_NUM = 1 AND price.ITEM_ID = Ticket.ITEM_ID)";
+			ticketFilterPage.resultCountVerification(query,"TotalResult");
+	}	
+
+	
+	@DataProvider (name="ticketFilterDateFilterData")
+	public Object[][] getticketFilterDateFilterData() throws Exception{
+		Object[][] testObjArray = ExcelReader.loadExcel(propReader.getApplicationproperty("ticketFilterTestData"), "Date");
+		return testObjArray;
+	}	
+	@Test(dataProvider = "ticketFilterDateFilterData", priority=5)
+	        public void verifyTicketFilterPrintedDate(Map<String, String> map) throws Exception {
+			
+		    logger.info("Method Name: verifyTicketFilterPrintedDate");
+			ticketFilterPage.explicitWaitForElementToBeClickable("SummarySearch");
+			ticketFilterPage.click("SummarySearch");
+			ticketFilterPage.verifyTextValue("SearchHeading", map.get("SearchHeader"));
+			ticketFilterPage.clearElement("FromPrintDValue");
+			ticketFilterPage.clearElement("ToPrintDValue");
+			ticketFilterPage.clearElement("FromActiveDValue");
+			ticketFilterPage.clearElement("ToActiveDValue");
+			ticketFilterPage.clearElement("FromEndDValue");
+			ticketFilterPage.clearElement("ToEndDValue");
+			ticketFilterPage.click("PrintedDropdown");
+			ticketFilterPage.click("PintedYes");
+			
+			//Getting current date for 'To date' field
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");  
+			Date date = new Date();
+			String currDate = dateFormat.format(date);
+			ticketFilterPage.clearElement("ToPrintedDValue");
+			ticketFilterPage.selectDateFromDatePicker("ToPrintedDValue",currDate);
+			
+			//Getting date 6 months less than current date for 'From date' field
+			Calendar FromDate = Calendar.getInstance();
+			FromDate.add(Calendar.MONTH, -6);
+			Date d = FromDate.getTime();
+			String NewFromDate = dateFormat.format(d);
+			ticketFilterPage.clearElement("FromPrintedDValue");
+			ticketFilterPage.selectDateFromDatePicker("FromPrintedDValue",NewFromDate);
+			ticketFilterPage.click("UserInput");
+			ticketFilterPage.enterIntoTextBox("UserInput", map.get("UpdatedUserName"));
+			Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+			ticketFilterPage.enterIntoTextBox("SearchLimitTextBox",map.get("SearchLimit"));
+			ticketFilterPage.explicitWaitForElementToBeClickable("SearchButton");
+			ticketFilterPage.click("SearchButton");
+			Thread.sleep(Long.parseLong(propReader.getApplicationproperty("Low")));
+			
+			//Formatting the date values to 'dd-MMM-yy' as database needs data in the stated format
+			//To get previous date of 'From date' 
+			DateFormat dateFormat1 = new SimpleDateFormat("dd-MMM-yy");  
+			Calendar FromDate2 = Calendar.getInstance();
+			FromDate2.setTime(d);
+			FromDate2.add(Calendar.DATE, -1);
+			Date date2 = new Date();
+			date2 = FromDate2.getTime();
+			
+			//To get next date of 'To date'. Changed dates to include 'from' and 'To' date values too when running query
+			String NewFromDate2 = dateFormat1.format(date2);
+			Calendar Todate2 = Calendar.getInstance();
+			Todate2.setTime(date);
+			Todate2.add(Calendar.DATE, 1);
+			Date date3 = new Date();
+			date3 = Todate2.getTime();
+			String NewToDate2 = dateFormat1.format(date3);
+			ticketFilterPage.resultCountVerification("select COUNT(*) from ticket_history where store_id='"+storeID+"' and printed_date between '"+NewFromDate2+"' and '"+NewToDate2+"' and PRINTED_USER='sim_qa3'","TotalResult");
+	
+}	
+	@AfterClass()
+	public void tearDown() {
+	try {
+		    logger.info("After Test: Logging out");
+			HomePage.click("UserMenu");
+			HomePage.explicitWaitForVisibility("Logout");
+			HomePage.click("Logout");
+			HomePage.explicitWaitForVisibility("Yes");
+			HomePage.click("Yes");
+			ticketFilterPage.closeDBConnection();
+
+		}
+
+		finally {
+
+			SIMWebdriverBase.close();
+
+		}
+}
+}
+	
